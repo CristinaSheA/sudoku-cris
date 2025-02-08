@@ -1,0 +1,39 @@
+:host {
+  display: block;
+}
+
+header {
+  width: 100%;
+  min-width: 1300px;
+  margin: 20px;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #fff;
+}
+header h1 {
+  cursor: pointer;
+  margin-top: 49px;
+  margin-bottom: 38px;
+  font-size: 26px;
+  transition: 0.35s;
+}
+.options {
+  cursor: pointer;
+  margin-bottom: 42px;
+  font-size: 13px;
+  width: 500px;
+  display: flex;
+  justify-content: space-between;
+}
+.options div {
+  margin: 0;
+  font-weight: bold;
+  transition: 0.35s;
+}
+.options div:hover, header h1:hover {
+  color: #4A90E2;
+  text-decoration: underline;
+}

@@ -1,0 +1,18 @@
+<h2 class="title">Estadísticas del Jugador</h2>
+<ul>
+  <li class="elements">Partidas Jugadas: {{ successRatePercentage(1) }}</li>
+  <li class="elements">Partidas Ganadas: {{ successRatePercentage(2) }}</li>
+  <li class="elements">Tasa de Éxito: {{ successRatePercentage(3) }}%</li>
+  <li class="elements">Distribución de Dificultad:</li>
+  <ul>
+    <li class="elements__dificulty-wins">
+      Fácil: {{ successRatePercentage(4) }}
+    </li>
+    <li class="elements__dificulty-wins">
+      Intermedio: {{ successRatePercentage(5) }}
+    </li>
+    <li class="elements__dificulty-wins">
+      Difícil: {{ successRatePercentage(6) }}
+    </li>
+  </ul>
+</ul>

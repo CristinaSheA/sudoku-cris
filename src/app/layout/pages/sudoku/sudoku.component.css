@@ -1,0 +1,35 @@
+:host {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+header {
+  display: flex;
+  justify-content: center;
+}
+main {
+  display: flex;
+  justify-content: space-between;
+}
+control-panel, stadistics {
+  padding: 22px 26px;
+  border-radius: 5px;
+  max-width: 160px;
+}
+stadistics {
+  max-width: 190px;
+}
+
+.button--difficulty {
+  cursor: pointer;
+  outline: none;
+  margin: 10px;
+  border: 0;
+  padding: 10px;
+  border-radius: 5px;
+  background-color: #eaeef4;
+  color: #325aaf;
+  transition: 0.35s;
+}
+.button--difficulty:hover {
+  background-color: #dbdee6;
+}

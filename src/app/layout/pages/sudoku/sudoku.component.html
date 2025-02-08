@@ -1,0 +1,16 @@
+<header>
+  <button (click)="generateSudoku('easy')" class="button--difficulty">
+    Fácil
+  </button>
+  <button (click)="generateSudoku('medium')" class="button--difficulty">
+    Medio
+  </button>
+  <button (click)="generateSudoku('hard')" class="button--difficulty">
+    Difícil
+  </button>
+</header>
+<main>
+  <control-panel class="shadowed"></control-panel>
+  <sudoku-table></sudoku-table>
+  <stadistics class="shadowed"></stadistics>
+</main>

@@ -1,0 +1,35 @@
+:host {
+  display: block;
+  max-width: 1000px;
+  margin: 20px auto;
+}
+h1 {
+  margin-bottom: 20px;
+}
+h2  {
+  border-radius: 5px;
+  background-color: #eaeef4;
+  font-size: 19px;
+  padding: 10px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+p, ul {
+  margin-bottom: 15px;
+}
+ul {
+  padding-left: 50px;
+}
+.testimonials {
+  padding: 10px 0px;
+  display: flex;
+  justify-content: center;
+}
+.testimonials__testimonial {
+  border-radius: 5px;
+  background-color: #eaeef4;
+  padding: 20px;
+}
+.testimonials__testimonial--medium {
+  margin: 0px 20px;
+}

@@ -1,0 +1,34 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  color: #4A90E2;
+  font-weight: bold;
+}
+.num-buttons button, button {
+  cursor: pointer;
+  margin-bottom: 10px;
+  padding: 14px 16px;
+  border: 0px;
+  background-color: #4A90E2;
+  border-radius: 5px;
+  color: white;
+  font-weight: bold;
+  transition: 0.35s;
+  outline: none;
+}
+.num-buttons {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+.middle-button {
+margin: 0px 15px;
+}
+.num-buttons button:hover, button:hover {
+  background-color: #4280c8;
+}
+i {
+  width: 30px;
+}
