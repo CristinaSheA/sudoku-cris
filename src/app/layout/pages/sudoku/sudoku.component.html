@@ -1,11 +1,11 @@
 <header>
-  <button (click)="generateSudoku('easy')" class="button--difficulty">
+  <button (click)="generateSudoku('easy')" class="button--difficulty" i18n>
     Fácil
   </button>
-  <button (click)="generateSudoku('medium')" class="button--difficulty">
+  <button (click)="generateSudoku('medium')" class="button--difficulty" i18n>
     Medio
   </button>
-  <button (click)="generateSudoku('hard')" class="button--difficulty">
+  <button (click)="generateSudoku('hard')" class="button--difficulty" i18n>
     Difícil
   </button>
 </header>
@@ -14,3 +14,4 @@
   <sudoku-table></sudoku-table>
   <stadistics class="shadowed"></stadistics>
 </main>
+<language-selector></language-selector>

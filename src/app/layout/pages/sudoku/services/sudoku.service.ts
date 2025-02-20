@@ -1,5 +1,5 @@
 import { inject, Injectable } from '@angular/core';
-import { Difficulty } from '../components/enums/difficulty.enum';
+import { Difficulty } from '../enums/difficulty.enum';
 import Swal from 'sweetalert2';
 import { Subject } from 'rxjs';
 import { PlayerStatsService } from './player-stats.service';

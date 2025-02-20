@@ -4,6 +4,13 @@
   "newProjectRoot": "projects",
   "projects": {
     "sudoku-cris": {
+      "i18n":{
+        "sourceLocale": "es",
+        "locales": {
+          "en": "src/locale/messages.en.xlf",
+          "ru": "src/locale/messages.ru.xlf"
+        }
+      },
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -17,7 +24,8 @@
             "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": [
-              "zone.js"
+              "zone.js",
+              "@angular/localize/init"
             ],
             "tsConfig": "tsconfig.app.json",
             "assets": [
@@ -37,6 +45,15 @@
             }
           },
           "configurations": {
+            "es": {
+              "localize": ["es"]
+            },
+            "en": {
+              "localize": ["en"]
+            },
+            "ru": {
+              "localize": ["ru"]
+            },
             "production": {
               "budgets": [
                 {
@@ -68,6 +85,15 @@
             },
             "development": {
               "buildTarget": "sudoku-cris:build:development"
+            },
+            "es": {
+              "buildTarget": "my-app:build:es"
+            },
+            "en": {
+              "buildTarget": "my-app:build:en"
+            },
+            "fr": {
+              "buildTarget": "my-app:build:ru"
             }
           },
           "defaultConfiguration": "development"
@@ -80,7 +106,8 @@
           "options": {
             "polyfills": [
               "zone.js",
-              "zone.js/testing"
+              "zone.js/testing",
+              "@angular/localize/init"
             ],
             "tsConfig": "tsconfig.spec.json",
             "assets": [

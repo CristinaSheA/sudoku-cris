@@ -3,12 +3,13 @@ import { TableComponent } from './components/table/table.component';
 import { StadisticsComponent } from './components/stadistics/stadistics.component';
 import { ControlPanelComponent } from './components/control-panel/control-panel.component';
 import { SudokuService } from './services/sudoku.service';
-import { Difficulty } from './components/enums/difficulty.enum';
+import { Difficulty } from './enums/difficulty.enum';
+import { LanguageSelectorComponent } from './components/language-selector/language-selector.component';
 
 @Component({
   selector: 'sudoku',
   standalone: true,
-  imports: [TableComponent, StadisticsComponent, ControlPanelComponent],
+  imports: [TableComponent, StadisticsComponent, ControlPanelComponent, LanguageSelectorComponent],
   templateUrl: './sudoku.component.html',
   styleUrl: './sudoku.component.css',
   changeDetection: ChangeDetectionStrategy.OnPush,

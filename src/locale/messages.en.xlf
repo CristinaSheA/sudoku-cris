@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+  <file source-language="es" datatype="plaintext" original="ng2.template">
+    <body>
+      <trans-unit id="2579239317561417215" datatype="html">
+        <source>Instrucciones</source>
+        <target>Instructions</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/layout/layout.component.html</context>
+          <context context-type="linenumber">4,5</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/layout/pages/instructions/instructions.component.html</context>
+          <context context-type="linenumber">1,2</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="2379082776169073909" datatype="html">
+        <source>Acerca de</source>
+        <target>About us</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/layout/layout.component.html</context>
+          <context context-type="linenumber">5,6</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/layout/pages/about-us/about-us.component.html</context>
+          <context context-type="linenumber">1,2</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="8709608762478367246" datatype="html">
+        <source>🤔 ¿Qué es el Sudoku?</source>
+        <target>🤔 What is Sudoku?</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/layout/pages/about-us/about-us.component.html</context>
+          <context context-type="linenumber">2,3</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="1997293958087383492" datatype="html">
+        <source> El Sudoku es un juego de lógica numérica que desafía tu mente.Con sus orígenes en Japón, se ha convertido en un favorito global para quienes buscan divertirse y ejercitarse mentalmente.
+        </source>
+        <target>Sudoku is a number logic game that challenges your mind. With its origins in Japan, it has become a global favorite for those looking for fun and mental exercise.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/layout/pages/about-us/about-us.component.html</context>
+          <context context-type="linenumber">4,7</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="240606779675284586" datatype="html">
+        <source>✨ Beneficios del Sudoku:</source>
+        <target>✨ Benefits of Sudoku:</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/layout/pages/about-us/about-us.component.html</context>
+          <context context-type="linenumber">8,9</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="6763215855810693813" datatype="html">
+        <source>Mejora la memoria</source>
+        <target>Improves memory</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/layout/pages/about-us/about-us.component.html</context>
+          <context context-type="linenumber">10,11</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="7374606932251236216" datatype="html">
+        <source>Desarrolla habilidades lógicas</source>
+        <target>Develops logical skills</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/layout/pages/about-us/about-us.component.html</context>
+          <context context-type="linenumber">11,12</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="5472191546553170908" datatype="html">
+        <source>Aumenta la concentración</source>
+        <target>Improves concentration</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/layout/pages/about-us/about-us.component.html</context>
+          <context context-type="linenumber">12,13</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="4225692227870596605" datatype="html">
+        <source>🧠 Mitos Comunes</source>
+        <target>🧠 Common Myths</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/layout/pages/about-us/about-us.component.html</context>
+          <context context-type="linenumber">14,15</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="7992791737337170137" datatype="html">
+        <source>Mito: Solo los matemáticos pueden jugar. Realidad: ¡Cualquiera puede disfrutar
+        del Sudoku!</source>
+        <target>Myth: Only mathematicians can play. Fact: Anyone can enjoy Sudoku!</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/layout/pages/about-us/about-us.component.html</context>
+          <context context-type="linenumber">15,17</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="465223829223225832" datatype="html">
+        <source>💬 Testimonios</source>
+        <target>💬 Feedback</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/layout/pages/about-us/about-us.component.html</context>
+          <context context-type="linenumber">17,18</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="4402269249546097018" datatype="html">
+        <source>Siempre he amado los desafíos matemáticos, y el Sudoku se ha convertido en mi pasatiempo favorito. No solo me ayuda a mantener mi mente aguda, sino que también me ha enseñado a pensar estratégicamente y a resolver problemas de manera más eficiente. Cada vez que completo un rompecabezas, siento una gran satisfacción. Recomiendo encarecidamente el Sudoku a mis estudiantes; a menudo lo utilizo como una herramienta en mis clases para demostrar la importancia del pensamiento lógico.</source>
+        <target>I have always loved math challenges, and Sudoku has become my favorite pastime. Not only does it help me keep my mind sharp, but it has also taught me to think strategically and solve problems more efficiently. Every time I complete a puzzle, I feel a great sense of satisfaction. I highly recommend Sudoku to my students; I often use it as a tool in my classes to demonstrate the importance of logical thinking.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/layout/pages/about-us/about-us.component.html</context>
+          <context context-type="linenumber">21,22</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="7991535582532335491" datatype="html">
+        <source>Descubrí el Sudoku durante la cuarentena y ha cambiado la manera en que paso mi tiempo libre. Al principio, me parecía complicado, pero a medida que practicaba, se volvió adictivo. Me encanta la sensación de ver cómo un rompecabezas que parecía imposible se va formando poco a poco. Además, he notado que mi capacidad de concentración ha mejorado desde que empecé a jugar. Es el equilibrio perfecto entre diversión y ejercicio mental.</source>
+        <target>I discovered Sudoku during my forties and it has changed the way I spend my free time. At first, it seemed complicated, but as I practiced, it became addictive. I love the feeling of watching a puzzle that seemed impossible slowly take shape. Also, I've noticed that my ability to concentrate has improved since I started playing. It's the perfect balance between fun and mental exercise.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/layout/pages/about-us/about-us.component.html</context>
+          <context context-type="linenumber">25,26</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="1728076213437309949" datatype="html">
+        <source>El Sudoku se ha convertido en una actividad familiar en casa. Mis hijos y yo pasamos horas intentando resolver diferentes niveles de dificultad juntos. No solo es una forma divertida de conectar, sino que también les ayuda a mejorar su lógica y habilidades de resolución de problemas. Es un tiempo de calidad que vale la pena, y nunca deja de ser un desafío. En cada sesión, todos terminamos con una sonrisa, ya sea que hayamos resuelto el puzzle o no.</source>
+        <target>Sudoku has become a family activity at home. My kids and I spend hours trying to solve different levels of difficulty together. Not only is it a fun way to connect, but it also helps them improve their logic and problem solving skills. It's worthwhile quality time, and it never fails to challenge. In every session, we all end up with a smile, whether we solved the puzzle or not.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/layout/pages/about-us/about-us.component.html</context>
+          <context context-type="linenumber">29,30</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="4043796160826360100" datatype="html">
+        <source>👤 Sobre el Desarrollador</source>
+        <target>👤 About the Developer</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/layout/pages/about-us/about-us.component.html</context>
+          <context context-type="linenumber">32,33</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="4589273867927397318" datatype="html">
+        <source>Desarrollado por Cristina Herega Pakhmutov, entusiasta de los juegos de lógica con el deseo de compartir la magia del Sudoku.</source>
+        <target>Developed by Cristina Herega Pakhmutov, a logic game enthusiast with the desire to share the magic of Sudoku.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/layout/pages/about-us/about-us.component.html</context>
+          <context context-type="linenumber">33,35</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="6301104601455372586" datatype="html">
+        <source>🧩 Cómo jugar al Sudoku</source>
+        <target>🧩 How to play Sudoku</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/layout/pages/instructions/instructions.component.html</context>
+          <context context-type="linenumber">2,3</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="7492641064279751954" datatype="html">
+        <source> El objetivo del Sudoku es rellenar una cuadrícula de 9x9 con dígitos de forma que cada columna, fila y sección de 3x3 contenga los números entre el 1 y el 9. Al principio del juego, la cuadrícula de 9x9 tendrá algunas casillas rellenas. Tu trabajo consiste en usar la lógica para rellenar los dígitos que faltan y completar la cuadrícula. No olvides que una jugada es incorrecta si:
+        </source>
+        <target> The object of Sudoku is to fill a 9x9 grid with digits so that each column, row and 3x3 section contains the numbers between 1 and 9. At the start of the game, the 9x9 grid will have some cells filled in. Your job is to use logic to fill in the missing digits and complete the grid. Don't forget that a move is incorrect if:</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/layout/pages/instructions/instructions.component.html</context>
+          <context context-type="linenumber">4,8</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="6131314770893269723" datatype="html">
+        <source>Alguna fila contiene más de un número igual del 1 al 9</source>
+        <target>Any row contains more than one equal number from 1 to 9</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/layout/pages/instructions/instructions.component.html</context>
+          <context context-type="linenumber">11,12</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="8198752151815449734" datatype="html">
+        <source>Alguna columna contiene más de una cifra del mismo número del 1 al 9</source>
+        <target>Any column contains more than one digit of the same number from 1 to 9.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/layout/pages/instructions/instructions.component.html</context>
+          <context context-type="linenumber">12,13</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="7926073551839387232" datatype="html">
+        <source> Cualquier cuadrícula de 3x3 contiene más de una cifra del mismo número del 1 al 9. </source>
+        <target> Any 3x3 grid contains more than one digit of the same number from 1 to 9. </target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/layout/pages/instructions/instructions.component.html</context>
+          <context context-type="linenumber">14,16</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="5633627769657701973" datatype="html">
+        <source>👍 Consejos para el Sudoku</source>
+        <target>👍 Sudoku Tips</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/layout/pages/instructions/instructions.component.html</context>
+          <context context-type="linenumber">18,19</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="3984048749421738656" datatype="html">
+        <source> El Sudoku es un juego de rompecabezas divertido una vez que le coges el truco. Al mismo tiempo, aprender a jugar al Sudoku puede ser un poco intimidante para los principiantes. Por lo tanto, si usted es un completo principiante, aquí hay algunos consejos de Sudoku que puede utilizar para mejorar sus habilidades de Sudoku.
+        </source>
+        <target> Sudoku is a fun puzzle game once you get the hang of it. At the same time, learning to play Sudoku can be a bit intimidating for beginners. So, if you are a complete beginner, here are some Sudoku tips you can use to improve your Sudoku skills.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/layout/pages/instructions/instructions.component.html</context>
+          <context context-type="linenumber">20,24</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="7249148424099986891" datatype="html">
+        <source>Consejo 1:</source>
+        <target>Tip 1:</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/layout/pages/instructions/instructions.component.html</context>
+          <context context-type="linenumber">28,29</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="2536208966272795000" datatype="html">
+        <source> Busque filas y columnas de 3x3 que contengan 5 o más números. Trabaje a través de las celdas vacías restantes, probando los números que no se han utilizado. En muchos casos, encontrará números que sólo pueden colocarse en una posición teniendo en cuenta los otros números que ya están en su fila, columna y cuadrícula de 3x3. </source>
+        <target> Look for 3x3 rows and columns containing 5 or more numbers. Work through the remaining empty cells, testing for unused numbers. In many cases, you will find numbers that can only be placed in one position given the other numbers already in your row, column and 3x3 grid.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/layout/pages/instructions/instructions.component.html</context>
+          <context context-type="linenumber">30,34</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="2002498318245153193" datatype="html">
+        <source>Consejo 2:</source>
+        <target>Tip 2:</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/layout/pages/instructions/instructions.component.html</context>
+          <context context-type="linenumber">38,39</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="6030493941992725133" datatype="html">
+        <source> Divida visualmente la cuadrícula en 3 columnas y 3 filas. Cada columna grande tendrá 3 cuadrículas de 3x3 y cada fila tendrá 3 cuadrículas de 3x3. Ahora, busca columnas o cuadrículas que tengan 2 del mismo número. Lógicamente, debe haber una 3ª copia del mismo número en la única sección de 9 celdas que queda. Mira en cada una de las 9 posiciones restantes y comprueba si puedes encontrar la ubicación del número que falta. </source>
+        <target> Visually divide the grid into 3 columns and 3 rows. Each large column will have 3 3x3 grids and each row will have 3 3x3 grids. Now, look for columns or grids that have 2 of the same number. Logically, there should be a 3rd copy of the same number in the one remaining 9-cell section. Look in each of the remaining 9 positions and see if you can find the location of the missing number. </target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/layout/pages/instructions/instructions.component.html</context>
+          <context context-type="linenumber">40,45</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="8166871487145126602" datatype="html">
+        <source> Fácil </source>
+        <target>Easy</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/layout/pages/sudoku/sudoku.component.html</context>
+          <context context-type="linenumber">3,4</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="6372706475905636316" datatype="html">
+        <source> Medio </source>
+        <target>Medium</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/layout/pages/sudoku/sudoku.component.html</context>
+          <context context-type="linenumber">6,7</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="7428694726290497424" datatype="html">
+        <source> Difícil </source>
+        <target>Hard</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/layout/pages/sudoku/sudoku.component.html</context>
+          <context context-type="linenumber">9,10</context>
+        </context-group>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

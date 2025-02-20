@@ -6,7 +6,7 @@ import {
   inject,
 } from '@angular/core';
 import { SudokuService } from '../../services/sudoku.service';
-import { Difficulty } from '../enums/difficulty.enum';
+import { Difficulty } from '../../enums/difficulty.enum';
 import { Subscription } from 'rxjs';
 
 @Component({
