@@ -1,0 +1,17 @@
+<form class="auth shadowed" [formGroup]="form">
+  @if(authMode !== 'log-in') {
+    <h2>Usuario</h2>
+  <input type="text" required formControlName="username">
+  }
+  <h2>Correo electrónico</h2>
+  <input type="email" required formControlName="email">
+  <h2>Contraseña</h2>
+  <input type="password" required formControlName="password">
+  @if(authMode === 'log-in') {
+    <button type="submit">Iniciar sesión</button>
+    <p (click)="changeAuthMode(2)">No tienes una cuenta todavía? Créala</p>
+  } @else {
+    <button type="submit" (click)="createUser()">Registrarse</button>
+    <p (click)="changeAuthMode(1)">Ya tienes una cuenta? Continua jugando</p>
+  }
+</form>

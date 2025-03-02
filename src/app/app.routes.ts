@@ -2,6 +2,7 @@ import { Routes } from '@angular/router';
 import { AboutUsComponent } from './layout/pages/about-us/about-us.component';
 import { InstructionsComponent } from './layout/pages/instructions/instructions.component';
 import { SudokuComponent } from './layout/pages/sudoku/sudoku.component';
+import { AuthComponent } from './layout/pages/auth/auth.component';
 
 export const routes: Routes = [
   {
@@ -16,10 +17,14 @@ export const routes: Routes = [
     path: 'about-us',
     component: AboutUsComponent,
   },
-  
-  { path: '', redirectTo: '/sudoku/easy', pathMatch: 'full' },
+  {
+    path: 'auth',
+    component: AuthComponent,
+  },
+
+  { path: '', redirectTo: 'auth', pathMatch: 'full' },
   {
     path: '**',
-    redirectTo: 'sudoku',
+    redirectTo: 'auth',
   },
 ];

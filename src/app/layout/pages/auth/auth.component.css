@@ -1,0 +1,44 @@
+:host {
+  display: block;
+}
+
+.auth {
+  max-width: 400px;
+  margin: 20px;
+  padding: 20px 20px;
+  border-radius: 5px;
+
+  background-color: #fff;
+}
+h2 {
+  text-align: left;
+  color: #325aaf;
+  font-size: 15px;
+  font-weight: bold;
+}
+input, button {
+  width: 100%;
+  max-width: 300px;
+  margin-bottom: 15px;
+  border: 0px;
+  padding: 10px;
+  border-radius: 5px;
+}
+input {
+  outline: none;
+  background-color: #eaeef4;
+}
+button {
+  max-width: 320px;
+  cursor: pointer;
+  background-color: #325aaf;
+  color: white;
+  transition: 0.35s;
+}
+button:hover {
+  background-color: #254383;
+}
+p {
+  cursor: pointer;
+  font-size: 12px;
+}
