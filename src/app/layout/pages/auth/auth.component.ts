@@ -16,7 +16,7 @@ export class AuthComponent {
   public authMode = 'log-in';
 
   public form: FormGroup = this.fb!.group({
-    username: ['', [Validators.required, Validators.minLength(3)]],
+    username: ['', [Validators.minLength(3)]],
     email: [
       '',
       [Validators.required, Validators.minLength(1), Validators.email],
@@ -35,7 +35,10 @@ export class AuthComponent {
         break;
     }
   } 
-  public createUser() { 
+  public createAccount() { 
     this.usersService!.createAccount(this.form)
+  }
+  public loginAccount() { 
+    this.usersService!.loginAccount(this.form)
   }
 }

@@ -1,11 +1,11 @@
 :host {
   display: block;
+  max-width: 390px;
+  margin: 0 auto;
 }
 
 .auth {
-  max-width: 400px;
-  margin: 20px;
-  padding: 20px 20px;
+  padding: 40px;
   border-radius: 5px;
 
   background-color: #fff;
@@ -19,16 +19,17 @@ h2 {
 input, button {
   width: 100%;
   max-width: 300px;
-  margin-bottom: 15px;
   border: 0px;
   padding: 10px;
   border-radius: 5px;
 }
 input {
+  margin-bottom: 30px;
   outline: none;
   background-color: #eaeef4;
 }
 button {
+  margin-bottom: 10px;
   max-width: 320px;
   cursor: pointer;
   background-color: #325aaf;
@@ -39,6 +40,11 @@ button:hover {
   background-color: #254383;
 }
 p {
+  text-align: center;
+  width: 100%;
   cursor: pointer;
   font-size: 12px;
+}
+p:hover {
+  color: #325aaf;
 }
