@@ -4,12 +4,12 @@ import { StadisticsComponent } from './components/stadistics/stadistics.componen
 import { ControlPanelComponent } from './components/control-panel/control-panel.component';
 import { SudokuService } from './services/sudoku.service';
 import { Difficulty } from './enums/difficulty.enum';
-import { LanguageSelectorComponent } from './components/language-selector/language-selector.component';
+
 
 @Component({
   selector: 'sudoku',
   standalone: true,
-  imports: [TableComponent, StadisticsComponent, ControlPanelComponent, LanguageSelectorComponent],
+  imports: [TableComponent, StadisticsComponent, ControlPanelComponent],
   templateUrl: './sudoku.component.html',
   styleUrl: './sudoku.component.css',
   changeDetection: ChangeDetectionStrategy.OnPush,

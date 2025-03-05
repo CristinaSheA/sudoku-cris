@@ -15,7 +15,6 @@ export class UserService {
   private isAuthenticated = false;
 
   constructor() {
-    // Recupera el estado de autenticación desde localStorage
     this.isAuthenticated = localStorage.getItem('isAuthenticated') === 'true';
   }
   public isLoggedIn(): boolean {
@@ -65,43 +64,37 @@ export class UserService {
     this.isAuthenticated = true;
     localStorage.setItem('isAuthenticated', 'true');
   }
-  public logout(): void {
+  public logOut(): void {
     const swalWithBootstrapButtons = Swal.mixin({
     customClass: {
       confirmButton: "btn btn-success",
       cancelButton: "btn btn-danger"
     },
-    buttonsStyling: false
+    buttonsStyling: true
   });
   swalWithBootstrapButtons.fire({
     title: "Are you sure you want to log out?",
-    text: "You won't be able to revert this!",
     icon: "warning",
     showCancelButton: true,
-    confirmButtonText: "Yes, delete it!",
-    cancelButtonText: "No, cancel!",
+    confirmButtonText: "Log out",
+    cancelButtonText: "Cancel",
     reverseButtons: true
   }).then((result) => {
     if (result.isConfirmed) {
-      swalWithBootstrapButtons.fire({
-        title: "Deleted!",
-        text: "Your file has been deleted.",
-        icon: "success"
-      });
+      this.router.navigate(['/auth']);
+      this.isAuthenticated = false;
+      localStorage.setItem('isAuthenticated', 'false');
     } else if (
-      /* Read more about handling dismissals below */
       result.dismiss === Swal.DismissReason.cancel
     ) {
-      swalWithBootstrapButtons.fire({
-        title: "Cancelled",
-        text: "Your imaginary file is safe :)",
-        icon: "error"
-      });
+      return
     }
   });
-    this.router.navigate(['/auth']);
-    this.isAuthenticated = false;
-    localStorage.setItem('isAuthenticated', 'false');
+    
+  }
+  public deleteAccount() {
+    console.log('de');
+    
   }
   private createQuery(
     username: string,

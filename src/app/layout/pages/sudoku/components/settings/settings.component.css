@@ -1,0 +1,38 @@
+:host {
+  display: block;
+}
+.danger, select {
+  cursor: pointer;
+  margin-bottom: 10px;
+  padding: 14px 16px;
+  border: 0px;
+  border-radius: 5px;
+  color: white;
+  font-weight: bold;
+  transition: 0.35s;
+  outline: none;
+  font-size: 11px;
+  text-transform: uppercase;
+  background-color: #ea5f5f;
+  width: 100%;
+}
+select {
+  background-color: #eaeef4;
+  color: #4A90E2;
+  
+}
+.danger {
+  margin: 3px 10px;
+}
+.danger:hover {
+  background-color: #c63535;
+}
+settings {
+  max-width: 200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 5px;
+  position: absolute;
+  bottom: 0;
+}

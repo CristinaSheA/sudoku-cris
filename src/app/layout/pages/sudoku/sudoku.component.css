@@ -13,10 +13,13 @@ main {
 control-panel, stadistics {
   padding: 22px 26px;
   border-radius: 5px;
-  max-width: 160px;
 }
 stadistics {
   max-width: 190px;
+}
+control-panel {
+  max-width: 160px;
+  position: relative;
 }
 
 .button--difficulty {
