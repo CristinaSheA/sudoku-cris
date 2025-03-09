@@ -106,7 +106,6 @@ export class TableComponent {
       }
     }
   }
-
   private refreshTable() {
     this.table = this.sudokuService.table;
   }

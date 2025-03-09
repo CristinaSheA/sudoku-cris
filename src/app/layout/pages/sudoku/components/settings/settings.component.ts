@@ -10,7 +10,6 @@ import { UserService } from '../../../../services/user.service';
 })
 export class SettingsComponent {
   private readonly userService: UserService = inject(UserService);
-
   public logOut() {
     this.userService.logOut();
   }

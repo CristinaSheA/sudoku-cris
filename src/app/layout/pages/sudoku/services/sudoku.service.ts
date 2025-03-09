@@ -12,7 +12,6 @@ export class SudokuService {
   public difficulty: Difficulty = Difficulty.Easy;
   public tableUpdated: Subject<void> = new Subject<void>();
   public selectedCell: { row: number; col: number } | null = null;
-  public notes: boolean = false;
   public mistakes: number = 0;
   public playerStatsService: PlayerStatsService = inject(PlayerStatsService);
 

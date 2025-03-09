@@ -45,15 +45,4 @@ export class ControlPanelComponent {
     this.cdr.detectChanges()
     this.cdr.markForCheck()
   }
-
-  // public toggleMode() {
-  //   if (this.isLightMode) {
-  //     document.body.classList.remove('dark-mode');
-  //     document.body.classList.add('light-mode');
-  //     console.log(document.body.classList);
-  //   } else {
-  //     document.body.classList.remove('light-mode');
-  //     document.body.classList.add('dark-mode');
-  //   }
-  // }
 }

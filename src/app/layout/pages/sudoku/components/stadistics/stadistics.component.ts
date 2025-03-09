@@ -1,5 +1,6 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, inject } from '@angular/core';
 import { PlayerStatsService } from '../../services/player-stats.service';
+import { UserService } from '../../../../services/user.service';
 
 @Component({
   selector: 'stadistics',
@@ -11,24 +12,30 @@ import { PlayerStatsService } from '../../services/player-stats.service';
 })
 export class StadisticsComponent {
   public playerStatsService: PlayerStatsService = inject(PlayerStatsService);
+  private readonly userService: UserService = inject(UserService);
+
   private readonly cdr: ChangeDetectorRef = inject(ChangeDetectorRef);
   public successRatePercentage(a: number) {
+    const user = this.userService.getCurrentUser();
     switch (a) {
       case 1:
-        return this.playerStatsService.gamesPlayed;
+        return user.gamesPlayed;
       case 2:
-        return this.playerStatsService.gamesWon;
+        return user.gamesWon;
       case 3:
-        return this.playerStatsService.successRatePercentage;
+        return user.successRate;
       case 4:
-        return this.playerStatsService.easyGamesWon;
+        return user.easyGamesWon;
       case 5:
-        return this.playerStatsService.mediumGamesWon;
+        return user.mediumGamesWon;
       case 6:
-        return this.playerStatsService.hardGamesWon;
+        return user.hardGamesWon;
     }
+    console.log(user.id)
     this.cdr.detectChanges()
     this.cdr.markForCheck()
     return
   }
+
+
 }
