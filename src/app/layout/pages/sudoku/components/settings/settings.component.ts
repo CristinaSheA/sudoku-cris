@@ -1,5 +1,6 @@
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { UserService } from '../../../../services/user.service';
+import { CtrlService } from '../../services/ctrl.service';
 
 @Component({
   selector: 'settings',
@@ -15,5 +16,16 @@ export class SettingsComponent {
   }
   public delete() {
     this.userService.deleteAccount();
+  }
+
+  isDarkTheme!: boolean;
+  constructor(private ctrlService: CtrlService) {}
+  ngOnInit() {
+    this.isDarkTheme = this.ctrlService.isDarkTheme();
+  }
+  changeTheme(event: Event) {
+    const theme = (event.target as HTMLSelectElement).value;
+    this.ctrlService.setTheme(theme);
+    this.isDarkTheme = theme === 'dark';
   }
 }

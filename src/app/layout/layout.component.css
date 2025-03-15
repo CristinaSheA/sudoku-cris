@@ -11,7 +11,6 @@ header {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: #fff;
 }
 header h1 {
   cursor: pointer;

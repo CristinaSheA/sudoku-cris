@@ -6,15 +6,47 @@
   margin: 0;
 }
 body {
-  background-color: #f9f9f9;
+  background-color: var(--background-color);
+  color: var(--text-color);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  
+}
+body.light {
+  --background-color: #f9f9f9;
+  --text-color: #000000;
+  --button-bg-color: #007bff;
+  --button-text-color: #ffffff;
+  --border-color: #cccccc;
+  --shadow-color-1: rgba(0, 0, 0, 0.1);
+  --shadow-color-2: rgba(0, 0, 0, 0.2);
+}
+body.dark {
+  --background-color: #121212;
+  --text-color: #ffffff;
+  --button-bg-color: #333333;
+  --button-text-color: #ffffff;
+  --border-color: #555555;
+  --shadow-color-1: rgba(255, 255, 255, 0.221);
+  --shadow-color-2: rgba(255, 255, 255, 0.37);
 }
 .shadowed {
-  -webkit-box-shadow: 0px 6px 12.6px 4px rgba(0, 0, 0, 0.17);
-  -moz-box-shadow: 0px 6px 12.6px 4px rgba(0, 0, 0, 0.17);
-  box-shadow: 0px 6px 12.6px 4px rgba(0, 0, 0, 0.17);
+  box-shadow: 0px 4px 8px var(--shadow-color-1), 0px 8px 16px var(--shadow-color-2);
 }
+button {
+  background-color: var(--button-bg-color);
+  color: var(--button-text-color);
+  border: 1px solid var(--border-color);
+  padding: 10px 20px;
+  cursor: pointer;
+}
+button.danger {
+  background-color: #dc3545;
+  color: #ffffff;
+}
+td, header h1, .options div, input {
+  color: var(--text-color);
+}
+
+
