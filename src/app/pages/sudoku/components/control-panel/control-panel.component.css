@@ -46,8 +46,7 @@ p {
 .logout:hover {
   background-color: #c63535;
 }
-.settings {
-  margin-top: auto;
+.pop-up-button {
   font-size: 11px;
   text-transform: uppercase;
   color: #4A90E2;
@@ -58,10 +57,14 @@ p {
   border-radius: 5px;
   transition: 0.35s;
 }
-.settings:hover {
+.pop-up-button:hover {
   color: #fff;
   background-color: #bdd0ec;
 }
+.compete {
+  margin-top: auto;
+}
+
 settings {
   padding: 20px;
   position: absolute;

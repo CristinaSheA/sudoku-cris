@@ -1,5 +1,4 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, inject } from '@angular/core';
-import { PlayerStatsService } from '../../services/player-stats.service';
 import { UserService } from '../../../../services/user.service';
 
 @Component({
@@ -11,7 +10,6 @@ import { UserService } from '../../../../services/user.service';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class StadisticsComponent {
-  public playerStatsService: PlayerStatsService = inject(PlayerStatsService);
   private readonly userService: UserService = inject(UserService);
 
   private readonly cdr: ChangeDetectorRef = inject(ChangeDetectorRef);

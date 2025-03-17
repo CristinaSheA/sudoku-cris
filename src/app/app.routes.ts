@@ -1,9 +1,9 @@
 import { Routes } from '@angular/router';
-import { AboutUsComponent } from './layout/pages/about-us/about-us.component';
-import { InstructionsComponent } from './layout/pages/instructions/instructions.component';
-import { SudokuComponent } from './layout/pages/sudoku/sudoku.component';
-import { AuthComponent } from './layout/pages/auth/auth.component';
-import { AuthGuard } from './layout/guards/auth.guard';
+import { AboutUsComponent } from './pages/about-us/about-us.component';
+import { InstructionsComponent } from './pages/instructions/instructions.component';
+import { SudokuComponent } from './pages/sudoku/sudoku.component';
+import { AuthComponent } from './pages/auth/auth.component';
+import { AuthGuard } from './guards/auth.guard';
 
 export const routes: Routes = [
   {

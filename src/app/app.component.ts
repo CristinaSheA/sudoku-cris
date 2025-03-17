@@ -2,15 +2,15 @@ import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
-import { LayoutComponent } from './layout/layout.component';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-root',
   imports: [
     HttpClientModule,
-    LayoutComponent,
     FormsModule,
     CommonModule,
+    RouterModule
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',

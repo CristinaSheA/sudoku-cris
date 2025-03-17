@@ -2,8 +2,8 @@ import { ChangeDetectionStrategy, ChangeDetectorRef, Component, inject } from '@
 import { TableComponent } from './components/table/table.component';
 import { StadisticsComponent } from './components/stadistics/stadistics.component';
 import { ControlPanelComponent } from './components/control-panel/control-panel.component';
-import { SudokuService } from './services/sudoku.service';
-import { Difficulty } from './enums/difficulty.enum';
+import { SudokuService } from '../../services/sudoku.service';
+import { Difficulty } from '../../enums/difficulty.enum';
 
 
 @Component({

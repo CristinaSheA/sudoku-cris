@@ -4,10 +4,9 @@ import {
   Component,
   inject,
 } from '@angular/core';
-import { SudokuService } from '../../services/sudoku.service';
-import { CtrlService } from '../../services/ctrl.service';
+import { SudokuService } from '../../../../services/sudoku.service';
 import { FormsModule } from '@angular/forms';
-import { SettingsComponent } from '../settings/settings.component';
+import { SettingsComponent } from './components/settings/settings.component';
 
 @Component({
   selector: 'control-panel',
@@ -19,7 +18,6 @@ import { SettingsComponent } from '../settings/settings.component';
 })
 export class ControlPanelComponent {
   private readonly sudokuService: SudokuService = inject(SudokuService);
-  private readonly ctrlService: CtrlService = inject(CtrlService);
   private readonly cdr: ChangeDetectorRef = inject(ChangeDetectorRef);
   public mistakes = this.sudokuService.mistakes;
   public isLightMode: boolean = true;
@@ -34,10 +32,10 @@ export class ControlPanelComponent {
     this.mistakes = this.sudokuService.mistakes;
   }
   public regenerateSudoku() {
-    this.ctrlService.regenerateSudoku();
+    this.sudokuService.regenerateSudoku();
   }
   public hint() {
-    this.ctrlService.hint()
+    this.sudokuService.hint()
     this.cdr.markForCheck();
   }
   public resolve() {

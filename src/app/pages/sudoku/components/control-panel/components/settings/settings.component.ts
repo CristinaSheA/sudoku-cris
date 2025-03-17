@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
-import { UserService } from '../../../../services/user.service';
-import { CtrlService } from '../../services/ctrl.service';
+import { UserService } from '../../../../../../services/user.service';
+import { SettingsService } from '../../../../../../services/settings.service';
 
 @Component({
   selector: 'settings',
@@ -11,6 +11,8 @@ import { CtrlService } from '../../services/ctrl.service';
 })
 export class SettingsComponent {
   private readonly userService: UserService = inject(UserService);
+  private readonly settingsService: SettingsService = inject(SettingsService);
+
   public logOut() {
     this.userService.logOut();
   }
@@ -19,13 +21,13 @@ export class SettingsComponent {
   }
 
   isDarkTheme!: boolean;
-  constructor(private ctrlService: CtrlService) {}
+  constructor() {}
   ngOnInit() {
-    this.isDarkTheme = this.ctrlService.isDarkTheme();
+    this.isDarkTheme = this.settingsService.isDarkTheme();
   }
   changeTheme(event: Event) {
     const theme = (event.target as HTMLSelectElement).value;
-    this.ctrlService.setTheme(theme);
+    this.settingsService.setTheme(theme);
     this.isDarkTheme = theme === 'dark';
   }
 }

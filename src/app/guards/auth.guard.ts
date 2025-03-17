@@ -1,10 +1,3 @@
-// import type { CanActivateFn } from '@angular/router';
-
-// export const authGuard: CanActivateFn = (route, state) => {
-  
-//   return true;
-// };
-
 import { Injectable } from '@angular/core';
 import {
   CanActivate,
@@ -31,11 +24,10 @@ export class AuthGuard implements CanActivate {
     | boolean
     | UrlTree {
     if (this.userService.isLoggedIn()) {
-      return true; // Permite el acceso a la ruta
+      return true;
     } else {
-      // Redirige al usuario a la página de autenticación
       this.router.navigate(['/auth']);
-      return false; // Bloquea el acceso a la ruta
+      return false;
     }
   }
 }

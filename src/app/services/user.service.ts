@@ -45,27 +45,23 @@ export class UserService {
   public loginAccount(form: FormGroup): void {
     const email = form.get('email')!.value;
     const password = form.get('password')!.value;
-  
+
     if (form.invalid) {
       console.error('Formulario inválido');
       return;
     }
-  
+
     this.loginQuery(email, password).subscribe({
       next: (response) => {
         console.log('Sesión iniciada exitosamente', response);
-  
-        // Guarda el userId y actualiza el estado de autenticación
         localStorage.setItem('userId', response.id);
         localStorage.setItem('isAuthenticated', 'true');
         this.isAuthenticated = true;
-  
-        // Navega a la página de sudoku
         this.router.navigate(['/sudoku']);
       },
       error: (error) => {
         console.error('Error al iniciar sesión', error);
-        Swal.fire('Error', 'Invalid email or password', 'error'); // Muestra un mensaje de error
+        Swal.fire('Error', 'Invalid email or password', 'error');
       },
     });
   }
@@ -156,7 +152,6 @@ export class UserService {
         }
       });
   }
-
   private deleteQuery(id: string): Observable<any> {
     return this.http.delete(`${this.apiUrl}/${id}`);
   }

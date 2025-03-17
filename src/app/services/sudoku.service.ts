@@ -2,7 +2,6 @@ import { inject, Injectable } from '@angular/core';
 import { Difficulty } from '../enums/difficulty.enum';
 import Swal from 'sweetalert2';
 import { Subject } from 'rxjs';
-import { PlayerStatsService } from './player-stats.service';
 
 @Injectable({
   providedIn: 'root',
@@ -13,13 +12,13 @@ export class SudokuService {
   public tableUpdated: Subject<void> = new Subject<void>();
   public selectedCell: { row: number; col: number } | null = null;
   public mistakes: number = 0;
-  public playerStatsService: PlayerStatsService = inject(PlayerStatsService);
+
 
   public generateSudoku(difficulty: Difficulty): void {
     this.table = Array.from({ length: 9 }, () => Array(9).fill(0));
     this.fillSudoku();
     this.removeNumbers(difficulty);
-    this.playerStatsService.gamesWon -= 1;
+    // this.playerStatsService.gamesWon -= 1;
     this.tableUpdated.next();
   }
   public canPlaceNumber(
@@ -92,33 +91,56 @@ export class SudokuService {
 
     if (isComplete) {
       console.log('completed');
-      this.playerStatsService.gamesWon += 1;
-      this.alerts(3);
-      switch (this.difficulty) {
-        case Difficulty.Easy:
-          this.playerStatsService.easyGamesWon += 1;
-          break;
-        case Difficulty.Medium:
-          this.playerStatsService.mediumGamesWon += 1;
-          break;
-        case Difficulty.Hard:
-          this.playerStatsService.hardGamesWon += 1;
-          break;
-      }
-      console.log('easyGamesWon', this.playerStatsService.easyGamesWon);
-      console.log('gamesPlayed', this.playerStatsService.gamesPlayed);
-      console.log('gamesWon', this.playerStatsService.gamesWon);
-      console.log('hardGamesWon', this.playerStatsService.hardGamesWon);
-      console.log('mediumGamesWon', this.playerStatsService.mediumGamesWon);
-      console.log('successRate', this.playerStatsService.successRate);
-      console.log('successRatePercentage', this.playerStatsService.successRatePercentage);
-
-      
-      const duration = 3000;
+      // this.playerStatsService.gamesWon += 1;
+      // this.alerts(3);
+      // switch (this.difficulty) {
+      //   case Difficulty.Easy:
+      //     this.playerStatsService.easyGamesWon += 1;
+      //     break;
+      //   case Difficulty.Medium:
+      //     this.playerStatsService.mediumGamesWon += 1;
+      //     break;
+      //   case Difficulty.Hard:
+      //     this.playerStatsService.hardGamesWon += 1;
+      //     break;
+      // }
     } else {
       console.log('incompleted');
     }
   }
+  public hint(): void {
+    let randomRowIndex = Math.floor(
+      Math.random() * this.table.length
+    );
+    let randomRow = this.table[randomRowIndex];
+    let emptyCellIndices = randomRow
+      .map((cell, index) => (cell === 0 ? index : -1))
+      .filter((index) => index !== -1);
+    if (emptyCellIndices.length === 0) {
+      console.log('No hay celdas vacías en la fila seleccionada.');
+      return;
+    }
+    let randomCellIndex =
+      emptyCellIndices[Math.floor(Math.random() * emptyCellIndices.length)];
+
+    for (let num = 1; num <= 9; num++) {
+      if (
+        this.canPlaceNumber(
+          randomRowIndex,
+          randomCellIndex,
+          num
+        )
+      ) {
+        randomRow[randomCellIndex] = num;
+        break;
+      }
+    }
+  }
+  public regenerateSudoku() {
+    this.generateSudoku(this.difficulty);
+    this.tableUpdated.next();
+  }
+
   private alerts(error: number): void {
     const Toast = Swal.mixin({
       toast: true,
