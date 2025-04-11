@@ -10,7 +10,8 @@ main {
   display: flex;
   justify-content: space-between;
 }
-control-panel, stadistics {
+control-panel,
+stadistics {
   padding: 22px 26px;
   border-radius: 5px;
 }
@@ -36,4 +37,3 @@ control-panel {
 .button--difficulty:hover {
   background-color: #dbdee6;
 }
-

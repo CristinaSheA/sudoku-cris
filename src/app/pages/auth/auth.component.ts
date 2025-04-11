@@ -1,5 +1,11 @@
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
-import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
+import {
+  FormBuilder,
+  FormGroup,
+  FormsModule,
+  ReactiveFormsModule,
+  Validators,
+} from '@angular/forms';
 import { UserService } from '../../services/user.service';
 
 @Component({
@@ -26,19 +32,19 @@ export class AuthComponent {
   public changeAuthMode(mode: number) {
     switch (mode) {
       case 1:
-        this.authMode = 'log-in'
+        this.authMode = 'log-in';
         break;
       case 2:
-        this.authMode = 'sign-up'
+        this.authMode = 'sign-up';
         break;
       default:
         break;
     }
-  } 
-  public createAccount() { 
-    this.usersService!.createAccount(this.form)
   }
-  public loginAccount() { 
-    this.usersService!.loginAccount(this.form)
+  public createAccount() {
+    this.usersService!.createAccount(this.form);
+  }
+  public loginAccount() {
+    this.usersService!.loginAccount(this.form);
   }
 }

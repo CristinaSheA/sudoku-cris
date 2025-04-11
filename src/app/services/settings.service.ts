@@ -23,9 +23,4 @@ export class SettingsService {
   public isDarkTheme(): boolean {
     return localStorage.getItem(this.THEME_KEY) === this.DARK_THEME;
   }
-  private toggleTheme() {
-    const currentTheme = localStorage.getItem(this.THEME_KEY) || this.LIGHT_THEME;
-    const newTheme = currentTheme === this.LIGHT_THEME ? this.DARK_THEME : this.LIGHT_THEME;
-    this.setTheme(newTheme);
-  }
 }

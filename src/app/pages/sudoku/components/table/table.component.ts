@@ -81,7 +81,7 @@ export class TableComponent {
       (inputElement as HTMLInputElement).focus();
     }
   }
-  
+
   @HostListener('document:click', ['$event'])
   private onClick(event: MouseEvent): void {
     const inputElement = document.querySelector('input');

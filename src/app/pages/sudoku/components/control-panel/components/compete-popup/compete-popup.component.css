@@ -1,3 +1,86 @@
 :host {
   display: block;
+  background-color: #f9f9f9;
+  text-transform: uppercase;
+  font-size: 11px;
+
+}
+button {
+  font-weight: bold;
+  border: 0;
+  transition: 0.35s;
+}
+.create {
+  cursor: pointer;
+  margin-bottom: 10px;
+  padding: 14px 16px;
+  border: 0px;
+  border-radius: 5px;
+  font-weight: bold;
+  transition: 0.35s;
+  outline: none;
+  background-color: #4a90e2;
+  color: #fff;
+  width: 100%;
+  text-align: center;
+}
+.competitions-slides {
+  display: flex;
+  margin-bottom: 20px;
+}
+.competitions-slides button, .join {
+  background-color: transparent;
+  color: #4a90e2;
+  border-bottom: 1px solid transparent;
+}
+.competitions-slides button:hover {
+  border-bottom: 1px solid #4a90e2;
+}
+.competitions {
+  width: 100%;
+}
+.competition, .join-input{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-left: 10px;
+  background-color: #eaeef4;
+  margin-bottom: 10px;
+  border: 0px;
+  border-radius: 5px;
+  color: #4a90e2;
+  font-weight: bold;
+  transition: 0.35s;
+  outline: none;
+}
+.join {
+  background-color: #4a90e2;
+  color: #fff;
+  -webkit-border-top-right-radius: 5px;
+  -webkit-border-bottom-right-radius: 5px;
+  -moz-border-radius-topright: 5px;
+  -moz-border-radius-bottomright: 5px;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+.join:hover, .create:hover {
+  background-color: #4280c8;
+}
+.join-by-id {
+  margin-bottom: 25px;
+  justify-content: space-between;
+  display: flex;
+  padding-left: 0;
+}
+.join-input {
+  margin: 0px;
+  background-color: #4a90e2;
+  color: white;
+  width: 100%;
+  padding: 10px;
+  border-radius: 0;
+}
+.join-input::placeholder {
+  color: white;
+  opacity: 0.4;
 }

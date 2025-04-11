@@ -1,4 +1,9 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, inject } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+  Component,
+  inject,
+} from '@angular/core';
 import { UserService } from '../../../../services/user.service';
 
 @Component({
@@ -29,11 +34,8 @@ export class StadisticsComponent {
       case 6:
         return user.hardGamesWon;
     }
-    console.log(user.id)
-    this.cdr.detectChanges()
-    this.cdr.markForCheck()
-    return
+    this.cdr.detectChanges();
+    this.cdr.markForCheck();
+    return;
   }
-
-
 }

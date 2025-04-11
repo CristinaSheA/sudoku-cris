@@ -1,18 +1,19 @@
-import { inject, Injectable } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { Difficulty } from '../enums/difficulty.enum';
 import Swal from 'sweetalert2';
 import { Subject } from 'rxjs';
+
 
 @Injectable({
   providedIn: 'root',
 })
 export class SudokuService {
-  public table: number[][] = [];
-  public difficulty: Difficulty = Difficulty.Easy;
-  public tableUpdated: Subject<void> = new Subject<void>();
   public selectedCell: { row: number; col: number } | null = null;
-  public mistakes: number = 0;
+  public tableUpdated: Subject<void> = new Subject<void>();
+  public difficulty: Difficulty = Difficulty.Easy;
 
+  public table: number[][] = [];
+  public mistakes: number = 0;
 
   public generateSudoku(difficulty: Difficulty): void {
     this.table = Array.from({ length: 9 }, () => Array(9).fill(0));
@@ -109,9 +110,7 @@ export class SudokuService {
     }
   }
   public hint(): void {
-    let randomRowIndex = Math.floor(
-      Math.random() * this.table.length
-    );
+    let randomRowIndex = Math.floor(Math.random() * this.table.length);
     let randomRow = this.table[randomRowIndex];
     let emptyCellIndices = randomRow
       .map((cell, index) => (cell === 0 ? index : -1))
@@ -124,13 +123,7 @@ export class SudokuService {
       emptyCellIndices[Math.floor(Math.random() * emptyCellIndices.length)];
 
     for (let num = 1; num <= 9; num++) {
-      if (
-        this.canPlaceNumber(
-          randomRowIndex,
-          randomCellIndex,
-          num
-        )
-      ) {
+      if (this.canPlaceNumber(randomRowIndex, randomCellIndex, num)) {
         randomRow[randomCellIndex] = num;
         break;
       }
@@ -140,7 +133,6 @@ export class SudokuService {
     this.generateSudoku(this.difficulty);
     this.tableUpdated.next();
   }
-
   private alerts(error: number): void {
     const Toast = Swal.mixin({
       toast: true,
