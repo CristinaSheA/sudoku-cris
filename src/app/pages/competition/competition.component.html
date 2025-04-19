@@ -1,0 +1,63 @@
+<div class="competition-container">
+  <header class="competition-header">
+    <h1>Competencia #{{ currentCompetition.joinCode }}</h1>
+    <p>Dificultad: {{ currentCompetition.difficulty }} | Jugadores: {{ currentCompetition.participants.length }}/{{ currentCompetition.maxPlayers }}</p>
+  </header>
+  <main>
+    <div class="control-panel">
+      <button class=" button" type="button">Salir de la competición</button>
+    
+      <!-- <p>{{ mistakes }}/3 fallos</p> -->
+    
+      <button
+        class="settings light-button button"
+        (click)="setShowSettings(!showSettings)"
+        type="button"
+      >
+        ajustes
+      </button>
+      @if(showSettings) {
+      <settings class="shadowed"></settings>
+      }
+    </div>
+    <sudoku-table></sudoku-table>
+    <div class="participants">
+      <h3>Jugadores:</h3>
+      <ul>
+        @for (player of currentCompetition.participants; track player) {
+          <!-- <li>{{ player.username }}</li> -->
+           ddd
+        }
+      </ul>
+    </div>
+  </main>
+
+  
+
+  <!-- Tablero de Sudoku -->
+  <!-- <div class="sudoku-board">
+    @for (row of currentCompetition.sudoku; track row; let i = $index) {
+      <div class="row">
+        @for (cell of row; track cell; let j = $index) {
+          <input 
+            type="number" 
+            [value]="cell || ''"
+            (change)="onCellChange(i, j, $event)"
+            [disabled]="isCompleted"
+          >
+        }
+      </div>
+    }
+  </div> -->
+
+  <!-- Controles -->
+  <!-- <div class="controls">
+    <button (click)="submitSolution()" [disabled]="!isCompleted">
+      Enviar solución
+    </button>
+    <p>Tiempo: {{ timeElapsed }} segundos</p>
+  </div> -->
+
+  <!-- Lista de participantes -->
+  
+</div>

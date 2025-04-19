@@ -1,18 +1,25 @@
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { CompetitionSection } from '../../../../../../enums/competition-section.enum';
 import { CompetitionsService } from '../../../../../../services/competitions.service';
+import { Router } from '@angular/router';
+import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 
 
 @Component({
   selector: 'compete-popup',
-  imports: [],
+  imports: [FormsModule, ReactiveFormsModule],
   templateUrl: './compete-popup.component.html',
   styleUrl: './compete-popup.component.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CompetePopupComponent {
   private readonly competitionsService: CompetitionsService = inject(CompetitionsService);
+  private readonly fb: FormBuilder = inject(FormBuilder);
+  private readonly router: Router = inject(Router);
   public competitionSection: CompetitionSection = CompetitionSection.Join;
+  public form: FormGroup = this.fb!.group({
+    joinCode: ['', [Validators.minLength(6)]],
+  });
   public competitionConfig = {
     difficulty: 'easy' as 'easy' | 'medium' | 'hard',
     privacity: 'public' as 'public' | 'private',
@@ -22,7 +29,9 @@ export class CompetePopupComponent {
   ngOnInit() {
     this.competitionsService.getCompetitions();
   }
-  
+  public joinCompetition(id: any | null) {
+    return this.router.navigate([`/competition/${id}`]);
+  }
   public get competitions() {
     return this.competitionsService.competitions;
   }

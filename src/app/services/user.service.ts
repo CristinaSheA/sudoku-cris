@@ -9,7 +9,7 @@ import Swal from 'sweetalert2';
   providedIn: 'root',
 })
 export class UserService {
-  private http = inject(HttpClient);
+  private readonly http = inject(HttpClient);
   private readonly router = inject(Router);
   public apiUrl = 'http://localhost:3000/users';
   private isAuthenticated = false;

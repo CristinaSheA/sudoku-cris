@@ -1,14 +1,20 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import Swal from 'sweetalert2';
-import { Competition } from '../interfaces/competition';
+import { Competition } from '../interfaces/competition.interface';
+import { UserService } from './user.service';
+import { SudokuService } from './sudoku.service';
+import { Difficulty } from '../enums/difficulty.enum';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class CompetitionsService {
   private apiUrl = 'http://localhost:3000';
-  private http = inject(HttpClient);
+  private readonly http = inject(HttpClient);
+  private readonly userService = inject(UserService);
+  private readonly sudokuService = inject(SudokuService);
   public competitions: Competition[] = [];
 
   public getCompetitions() {
@@ -21,17 +27,39 @@ export class CompetitionsService {
       },
     });
   }
-  public get publicCompetitions() {
-    return this.competitions.filter(comp => comp.privacity === 'public');
+  public getCompetitionById(id: string): Observable<Competition> {
+    return this.http.get<Competition>(`${this.apiUrl}/competitions/${id}`);
   }
-  public createCompetition(difficulty: string, privacity: string,maxPlayers: number | null) {
-    const joinCode = this.generateJoinCode();
+  public get publicCompetitions() {
+    return this.competitions.filter((comp) => comp.privacity === 'public');
+  }
+  public async createCompetition(
+    difficulty: string,
+    privacity: string,
+    maxPlayers: number | null
+  ) {
+    const creator = await this.userService.getCurrentUser();
+    const creatorId = creator.id;
+    let sudoku;
+    switch (difficulty) {
+      case 'easy':
+        sudoku = this.sudokuService.generateSudoku(Difficulty.Easy);
+        break;
+      case 'medium':
+        sudoku = this.sudokuService.generateSudoku(Difficulty.Medium);
+        break;
+      case 'hard':
+        sudoku = this.sudokuService.generateSudoku(Difficulty.Hard);
+        break;
+    }
+
     return this.http
       .post(`${this.apiUrl}/competitions`, {
         difficulty,
         privacity,
         maxPlayers,
-        joinCode,
+        creatorId,
+        sudoku
       })
       .subscribe({
         next: (response) => {
@@ -43,12 +71,7 @@ export class CompetitionsService {
         },
       });
   }
-  private generateJoinCode() {
-    const characters = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
-    let code = '';
-    for (let i = 0; i < 6; i++) {
-      code += characters.charAt(Math.floor(Math.random() * characters.length));
-    }
-    return code;
+  public setTable(competition: Competition) {
+    this.sudokuService.table = competition.sudoku
   }
 }

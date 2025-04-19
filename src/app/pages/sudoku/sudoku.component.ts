@@ -26,15 +26,15 @@ export class SudokuComponent {
     switch (difficulty) {
       case 'easy':
         this.sudokuService.generateSudoku(Difficulty.Easy);
+        this.sudokuService.tableUpdated.next()
         break;
       case 'medium':
         this.sudokuService.generateSudoku(Difficulty.Medium);
+        this.sudokuService.tableUpdated.next()
         break;
       case 'hard':
         this.sudokuService.generateSudoku(Difficulty.Hard);
-        break;
-      default:
-        this.sudokuService.generateSudoku(Difficulty.Easy);
+        this.sudokuService.tableUpdated.next()
         break;
     }
     this.cdr.detectChanges();

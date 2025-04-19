@@ -15,12 +15,11 @@ export class SudokuService {
   public table: number[][] = [];
   public mistakes: number = 0;
 
-  public generateSudoku(difficulty: Difficulty): void {
+  public generateSudoku(difficulty: Difficulty) {
     this.table = Array.from({ length: 9 }, () => Array(9).fill(0));
     this.fillSudoku();
     this.removeNumbers(difficulty);
-    // this.playerStatsService.gamesWon -= 1;
-    this.tableUpdated.next();
+    return this.table
   }
   public canPlaceNumber(
     row: number,

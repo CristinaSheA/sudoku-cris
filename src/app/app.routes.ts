@@ -4,6 +4,7 @@ import { InstructionsComponent } from './pages/instructions/instructions.compone
 import { SudokuComponent } from './pages/sudoku/sudoku.component';
 import { AuthComponent } from './pages/auth/auth.component';
 import { AuthGuard } from './guards/auth.guard';
+import { CompetitionComponent } from './pages/competition/competition.component';
 
 export const routes: Routes = [
   {
@@ -24,6 +25,10 @@ export const routes: Routes = [
   {
     path: 'auth',
     component: AuthComponent,
+  },
+  {
+    path: 'competition/:id',
+    component: CompetitionComponent,
   },
   { path: '', redirectTo: 'sudoku', pathMatch: 'full' },
   {

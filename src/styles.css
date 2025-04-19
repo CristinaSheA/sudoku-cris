@@ -47,10 +47,6 @@ td, header h1, .options div, input {
   color: var(--text-color);
 }
 
-/* .shadowed {
-  box-shadow: 0px 4px 8px var(--shadow-color-1), 0px 8px 16px var(--shadow-color-2);
-} */
-
 .shadowed {
   -webkit-box-shadow: 0px 6px 12.6px 4px rgba(0, 0, 0, 0.17);
   -moz-box-shadow: 0px 6px 12.6px 4px rgba(0, 0, 0, 0.17);
@@ -71,4 +67,52 @@ select {
   text-transform: uppercase;
   background-color: #eaeef4;
   width: 100%;
+}
+
+.danger {
+  cursor: pointer;
+  margin: 3px 10px;
+  padding: 14px 16px;
+  border: 0px;
+  border-radius: 5px;
+  color: white;
+  font-weight: bold;
+  transition: 0.35s;
+  outline: none;
+  font-size: 11px;
+  text-transform: uppercase;
+  background-color: #ea5f5f;
+  width: 100%;
+}
+.danger:hover {
+  background-color: #c63535;
+}
+
+.light-button {
+  color: #4a90e2;
+  background-color: #eaeef4;
+}
+.light-button:hover {
+  color: #fff;
+  background-color: #bdd0ec;
+}
+.dark-button {
+  background-color: #4a90e2;
+  color: white;
+}
+.dark-button:hover {
+  background-color: #4280c8;
+}
+
+.button {
+  text-transform: uppercase;
+  font-size: 11px;
+  width: 100%;
+  cursor: pointer;
+  margin-bottom: 10px;
+  padding: 14px 16px;
+  border: 0px;
+  border-radius: 5px;
+  font-weight: bold;
+  transition: 0.35s;
 }

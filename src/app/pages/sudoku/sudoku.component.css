@@ -22,18 +22,8 @@ control-panel {
   max-width: 160px;
   position: relative;
 }
-
-.button--difficulty {
-  cursor: pointer;
-  outline: none;
-  margin: 10px;
-  border: 0;
-  padding: 10px;
-  border-radius: 5px;
-  background-color: #eaeef4;
-  color: #325aaf;
-  transition: 0.35s;
-}
-.button--difficulty:hover {
-  background-color: #dbdee6;
+header button {
+  margin-right: 20px;
+  margin-bottom: 20px;
+  width: auto;
 }

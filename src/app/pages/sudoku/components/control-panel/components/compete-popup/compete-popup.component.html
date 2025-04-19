@@ -1,15 +1,15 @@
 <div class="competitions-slides">
-  <button (click)="changeSection('join')">unirse</button>
-  <button (click)="changeSection('create')">crear</button>
+  <button (click)="changeSection('join')" type="button">unirse</button>
+  <button (click)="changeSection('create')" type="button">crear</button>
 </div>
 @if(competitionSection === "JOIN") {
 <div class="competitions">
-  <div class="join-by-id">
-    <input type="text" class="join-input" placeholder="🆔 Unirse por ID" />
-    <button class="join">
+  <form class="join-by-id" [formGroup]="form">
+    <input type="text" class="join-input" placeholder="🆔 Unirse por ID" formControlName="joinCode" />
+    <button class="join" type="submit" (click)="joinCompetition(null)">
       unirse
     </button>
-  </div>
+  </form>
   
   @for (competition of competitions; track competition) { @if
   (competition.privacity === 'public') {
@@ -23,7 +23,7 @@
     <span>🔴 Difícil</span>
     } }
     <span>👥 {{ competition.participants.length }}/{{ competition.maxPlayers }}</span>
-    <button class="join">
+    <button class="join" (click)="joinCompetition(competition.id)" type="button">
       unirse
     </button>
   </div>

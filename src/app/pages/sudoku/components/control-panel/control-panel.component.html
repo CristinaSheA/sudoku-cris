@@ -1,29 +1,32 @@
 <div class="container">
-  <button (click)="hint()" class="button--control">Pista</button>
-  <button class="button--control" (click)="resolve()">Verificar</button>
-  <button (click)="regenerateSudoku()" class="button--control">
+  <button (click)="hint()" class="dark-button button" type="button">Pista</button>
+  <button class="dark-button button" (click)="resolve()" type="button">
+    Verificar
+  </button>
+  <button (click)="regenerateSudoku()" class="dark-button button" type="button">
     Regenerar
   </button>
 
   <p>{{ mistakes }}/3 fallos</p>
 
   <button
-    class="compete pop-up-button"
+    class="compete light-button button"
     (click)="setShowCompetition(!showCompetitionPopup)"
+    type="button"
   >
     Competir
   </button>
-  
   <button
-    class="settings pop-up-button"
+    class="settings light-button button"
     (click)="setShowSettings(!showSettings)"
+    type="button"
   >
     ajustes
   </button>
   @if(showSettings) {
   <settings class="shadowed"></settings>
-  } 
-  <!-- @if(showCompetitionPopup) { -->
+  }
+  @if(showCompetitionPopup) {
   <compete-popup class="shadowed"></compete-popup>
-  <!-- } -->
+  }
 </div>

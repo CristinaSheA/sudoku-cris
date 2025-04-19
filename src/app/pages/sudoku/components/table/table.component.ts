@@ -30,6 +30,8 @@ export class TableComponent {
       }
     );
     this.sudokuService.generateSudoku(Difficulty.Easy);
+    this.sudokuService.tableUpdated.next()
+
   }
   ngOnDestroy() {
     this.tableUpdatedSubscription.unsubscribe();
@@ -87,7 +89,6 @@ export class TableComponent {
     const inputElement = document.querySelector('input');
     if (inputElement && !inputElement.contains(event.target as Node)) {
       this.sudokuService.selectedCell = null;
-      console.log('dsds');
     }
   }
   @HostListener('document:keydown', ['$event'])
