@@ -1,10 +1,11 @@
 import { Routes } from '@angular/router';
-import { AboutUsComponent } from './pages/about-us/about-us.component';
-import { InstructionsComponent } from './pages/instructions/instructions.component';
-import { SudokuComponent } from './pages/sudoku/sudoku.component';
-import { AuthComponent } from './pages/auth/auth.component';
-import { AuthGuard } from './guards/auth.guard';
-import { CompetitionComponent } from './pages/competition/competition.component';
+
+import { AuthComponent } from './features/users/pages/auth/auth.component';
+import { AuthGuard } from './core/guards/auth.guard';
+import { CompetitionComponent } from './features/competitions/pages/competition/competition.component';
+import { AboutUsComponent } from './features/info-pages/about-us/about-us.component';
+import { InstructionsComponent } from './features/info-pages/instructions/instructions.component';
+import { SudokuComponent } from './features/sudoku/pages/sudoku/sudoku.component';
 
 export const routes: Routes = [
   {
