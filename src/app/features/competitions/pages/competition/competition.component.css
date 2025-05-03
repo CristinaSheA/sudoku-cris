@@ -2,6 +2,10 @@
   max-width: 1000px;
   margin: 0 auto;
 }
+* {
+  font-weight: bold;
+  color: #4a90e2;
+}
 header {
   display: flex;
   justify-content: center;
@@ -41,6 +45,14 @@ p {
   color: #4a90e2;
   font-weight: bold;
 }
-.control-panel, participants {
+.control-panel, .participants {
   padding: 20px;
+}
+h2 {
+  margin-bottom: 10px;
+  text-align: center;
+  font-size: 16px;
+}
+li {
+  font-size: 14px;
 }

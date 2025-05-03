@@ -2,8 +2,13 @@ import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { CompetitionSection } from '../../../../core/enums/competition-section.enum';
 import { CompetitionsService } from '../../services/competitions.service';
 import { Router } from '@angular/router';
-import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
-
+import {
+  FormBuilder,
+  FormGroup,
+  FormsModule,
+  ReactiveFormsModule,
+  Validators,
+} from '@angular/forms';
 
 @Component({
   selector: 'compete-popup',
@@ -13,7 +18,8 @@ import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } 
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CompetePopupComponent {
-  private readonly competitionsService: CompetitionsService = inject(CompetitionsService);
+  private readonly competitionsService: CompetitionsService =
+    inject(CompetitionsService);
   private readonly fb: FormBuilder = inject(FormBuilder);
   private readonly router: Router = inject(Router);
   public competitionSection: CompetitionSection = CompetitionSection.Join;
@@ -23,15 +29,11 @@ export class CompetePopupComponent {
   public competitionConfig = {
     difficulty: 'easy' as 'easy' | 'medium' | 'hard',
     privacity: 'public' as 'public' | 'private',
-    maxPlayers: 4
+    maxPlayers: 4,
   };
   ngOnInit() {
     this.competitionsService.getCompetitions();
   }
-  public joinCompetition(id: any | null) {
-    return this.router.navigate([`/competition/${id}`]);
-  }
-
   public get competitions() {
     return this.competitionsService.competitions;
   }
@@ -66,5 +68,23 @@ export class CompetePopupComponent {
         this.competitionSection = CompetitionSection.Create;
         break;
     }
+  }
+  public joinCompetition(competitionId: any) {
+    this.competitionsService.joinCompetition(competitionId).subscribe({
+      next: () => {
+        this.router.navigate([`/competition/${competitionId}`]);
+      },
+      error: (error) => {
+        console.error('Error joining competition:', error);
+      },
+    });
+  }
+  public joinCompetitionByCode() {
+    const joinCode = this.form.get('joinCode')?.value;
+    if (!joinCode) return;
+    const competition = this.competitions.find(
+      (comp) => comp.joinCode === joinCode
+    );
+    this.joinCompetition(competition!.id);
   }
 }

@@ -1,30 +1,37 @@
 <div class="competition-container">
   <header class="competition-header">
     <h1>Competencia #{{ currentCompetition.joinCode }}</h1>
-    <p>Dificultad: {{ currentCompetition.difficulty }} | Jugadores: {{ currentCompetition.participants.length }}/{{ currentCompetition.maxPlayers }}</p>
+    <p>
+      Dificultad: {{ currentCompetition.difficulty }} | Jugadores:
+      {{ currentCompetition.participants.length }}/{{
+        currentCompetition.maxPlayers
+      }}
+    </p>
   </header>
   <main>
     <div class="control-panel shadowed">
       <!-- <p>{{ mistakes }}/3 fallos</p> -->
       <button
-        class="settings button light-button "
+        class="settings button light-button"
         (click)="setShowSettings(!showSettings)"
         type="button"
       >
         ajustes
       </button>
-      <button class="danger button" type="danger" (click)="leaveCompetition()">Salir de la competición</button>
+      <button class="danger button" type="danger" (click)="leaveCompetition()">
+        Salir de la competición
+      </button>
       @if(showSettings) {
       <settings class="shadowed"></settings>
       }
     </div>
     <sudoku-table></sudoku-table>
     <div class="participants shadowed">
-      <h3>Jugadores:</h3>
+      <h2>Jugadores:</h2>
       <ul>
-        <!-- @for (player of getPlayers(); track player!.id) {
+        @for (player of loadParticipants; track player!.id) {
           <li>{{ player!.username || 'Usuario desconocido' }}</li>
-        } -->
+        }
       </ul>
     </div>
   </main>

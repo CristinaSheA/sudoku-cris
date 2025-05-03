@@ -6,7 +6,7 @@
 <div class="competitions">
   <form class="join-by-id" [formGroup]="form">
     <input type="text" class="join-input" placeholder="🆔 Unirse por ID" formControlName="joinCode" />
-    <button class="join" type="submit">
+    <button class="join" type="submit" (click)="joinCompetitionByCode()">
       unirse
     </button>
   </form>
@@ -23,7 +23,7 @@
     <span>🔴 Difícil</span>
     } }
     <span>👥 {{ competition.participants.length }}/{{ competition.maxPlayers }}</span>
-    <button class="join" (click)="joinCompetition(competition.id)" type="button">
+    <button class="join" type="button" (click)="joinCompetition(competition.id)">
       unirse
     </button>
   </div>

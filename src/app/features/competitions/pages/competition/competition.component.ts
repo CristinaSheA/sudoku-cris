@@ -5,6 +5,7 @@ import { CompetitionsService } from '../../services/competitions.service';
 import { SettingsComponent } from '../../../../shared/components/settings/settings.component';
 import { TableComponent } from '../../../sudoku/components/table/table.component';
 import { SudokuService } from '../../../sudoku/services/sudoku.service';
+import { UserService } from '../../../users/services/user.service';
 import { User } from '../../../../core/interfaces/user.interface';
 
 @Component({
@@ -18,10 +19,12 @@ export class CompetitionComponent {
   private readonly route = inject(ActivatedRoute);
   private readonly competitionsService = inject(CompetitionsService);
   private readonly sudokuService = inject(SudokuService);
+  private readonly userService = inject(UserService);
   private readonly router = inject(Router);
   public currentCompetition!: Competition;
   public mistakes = this.sudokuService.mistakes;
   public showSettings: boolean = false;
+  participants = []
 
   ngOnInit() {
     this.route.params.subscribe((params) => {
@@ -33,6 +36,8 @@ export class CompetitionComponent {
           this.sudokuService.table = comp.sudoku;
           this.sudokuService.tableUpdated.next();
           console.log(this.currentCompetition);
+          this.competitionsService.setTable(this.currentCompetition)
+          this.loadParticipants
         },
         error: () => this.router.navigate(['/sudoku']),
       });
@@ -43,8 +48,11 @@ export class CompetitionComponent {
   }
   public leaveCompetition() {
     this.competitionsService.leaveCompetition(this.currentCompetition);
-    this.competitionsService.updateCompetition(this.currentCompetition);
     this.competitionsService.getCompetitions();
+    const competition = this.competitionsService.competitions.find(
+      (comp) => comp.id === this.currentCompetition.id
+    );
+    console.log(competition);
   }
   private loadCompetition(id: string) {
     this.competitionsService.getCompetitionById(id).subscribe({
@@ -56,4 +64,30 @@ export class CompetitionComponent {
       error: () => this.router.navigate(['/sudoku']),
     });
   }
+  public get loadParticipants() {
+    let participants = []
+    for (const participantId of this.currentCompetition.participants) {
+      const participant = this.userService.users.find(
+        (part) => part.id === participantId
+      );
+      console.log('d', participant);
+      participants.push(participant)
+    }
+    return participants
+  }
+
+  isCurrentUser(player: User | undefined): boolean {
+    const currentUserId = localStorage.getItem('userId');
+    if (typeof player === 'object') {
+      return player.id === currentUserId;
+    }
+    return player === currentUserId;
+  }
+  
+  // isCreator(player: User | string): boolean {
+  //   if (!this.currentCompetition) return false;
+    
+  //   const playerId = typeof player === 'object' ? player.id : player;
+  //   return playerId === this.currentCompetition.creatorId;
+  // }
 }
