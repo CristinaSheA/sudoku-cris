@@ -35,7 +35,7 @@ export class CompetitionComponent {
           this.sudokuService.table = comp.sudoku;
           this.sudokuService.tableUpdated.next();
           this.competitionsService.setTable(this.currentCompetition)
-          this.loadParticipants
+          this.loadPlayers
         },
         error: () => this.router.navigate(['/sudoku']),
       });
@@ -62,15 +62,15 @@ export class CompetitionComponent {
       error: () => this.router.navigate(['/sudoku']),
     });
   }
-  public get loadParticipants() {
-    let participants = []
-    for (const participantId of this.currentCompetition.participants) {
+  public get loadPlayers() {
+    let players = []
+    for (const participantId of this.currentCompetition.players) {
       const participant = this.userService.users.find(
         (part) => part.id === participantId
       );
-      participants.push(participant)
+      players.push(participant)
     }
-    return participants
+    return players
   }
   public isCurrentUser(player: User | undefined): boolean {
     const currentUserId = localStorage.getItem('userId');

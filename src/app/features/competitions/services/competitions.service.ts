@@ -87,9 +87,7 @@ export class CompetitionsService {
   }
   public leaveCompetition(competition: Competition) {
     const creatorId = localStorage.getItem('userId');
-    competition.participants.filter((userId) => userId !== creatorId);
-    console.log(competition.participants);
-    console.log(competition);
+    competition.players.filter((userId) => userId !== creatorId);
     this.updateCompetition(competition)
     return this.router.navigate([`/sudoku`]);
   }

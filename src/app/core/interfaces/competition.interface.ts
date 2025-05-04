@@ -4,7 +4,7 @@ export interface Competition {
   id: number;
   difficulty: string;
   startDate: string;
-  participants: string[];
+  players: string[];
   sudoku: [][];
   privacity: string;
   maxPlayers: number;

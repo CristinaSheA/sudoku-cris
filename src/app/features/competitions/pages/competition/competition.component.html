@@ -3,7 +3,7 @@
     <h1>Competencia #{{ currentCompetition.joinCode }}</h1>
     <p>
       Dificultad: {{ currentCompetition.difficulty }} | Jugadores:
-      {{ currentCompetition.participants.length }}/{{
+      {{ currentCompetition.players.length }}/{{
         currentCompetition.maxPlayers
       }}
     </p>
@@ -26,26 +26,18 @@
       }
     </div>
     <sudoku-table></sudoku-table>
-    <!-- <div class="participants shadowed">
-      <h2>Jugadores:</h2>
-      <ul>
-        @for (player of loadParticipants; track player!.id) {
-          <li>{{ player!.username || 'Usuario desconocido' }}</li>
-        }
-      </ul>
-    </div> -->
-    <div class="participants shadowed">
+    <div class="players shadowed">
       <div class="panel-header">
         <h3>
           👥 Jugadores
           <span class="badge"
-            >{{ loadParticipants.length }}/{{ currentCompetition.maxPlayers }}</span
+            >{{ loadPlayers.length }}/{{ currentCompetition.maxPlayers }}</span
           >
         </h3>
       </div>
 
       <ul class="players-list">
-        @for (player of loadParticipants; track player; let i = $index) {
+        @for (player of loadPlayers; track player; let i = $index) {
         <li class="player-card" [class.current-user]="isCurrentUser(player)">
           <span class="player-emoji"> @if (i === 0) { 🏆 } @else { 👤 } </span>
 
@@ -68,7 +60,7 @@
         }
       </ul>
 
-      @if (loadParticipants.length === 0) {
+      @if (loadPlayers.length === 0) {
       <div class="empty-state">
         <p>🎮 Esperando más jugadores...</p>
       </div>

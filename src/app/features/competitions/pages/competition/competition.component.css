@@ -45,7 +45,7 @@ p {
   color: #4a90e2;
   font-weight: bold;
 }
-.control-panel, .participants {
+.control-panel, .players {
   padding: 20px;
 }
 h2 {
@@ -58,7 +58,7 @@ li {
 }
 
 
-.participants-panel {
+.players-panel {
   background: #ffffff;
   border-radius: 12px;
   padding: 1rem;

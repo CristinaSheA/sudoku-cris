@@ -22,7 +22,7 @@
     } @case ('hard') {
     <span>🔴 Difícil</span>
     } }
-    <span>👥 {{ competition.participants.length }}/{{ competition.maxPlayers }}</span>
+    <span>👥 {{ competition.players.length }}/{{ competition.maxPlayers }}</span>
     <button class="join" type="button" (click)="joinCompetition(competition.id)">
       unirse
     </button>
