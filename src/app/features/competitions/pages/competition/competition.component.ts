@@ -24,7 +24,6 @@ export class CompetitionComponent {
   public currentCompetition!: Competition;
   public mistakes = this.sudokuService.mistakes;
   public showSettings: boolean = false;
-  participants = []
 
   ngOnInit() {
     this.route.params.subscribe((params) => {
@@ -35,7 +34,6 @@ export class CompetitionComponent {
           this.currentCompetition = comp;
           this.sudokuService.table = comp.sudoku;
           this.sudokuService.tableUpdated.next();
-          console.log(this.currentCompetition);
           this.competitionsService.setTable(this.currentCompetition)
           this.loadParticipants
         },
@@ -70,24 +68,15 @@ export class CompetitionComponent {
       const participant = this.userService.users.find(
         (part) => part.id === participantId
       );
-      console.log('d', participant);
       participants.push(participant)
     }
     return participants
   }
-
-  isCurrentUser(player: User | undefined): boolean {
+  public isCurrentUser(player: User | undefined): boolean {
     const currentUserId = localStorage.getItem('userId');
     if (typeof player === 'object') {
       return player.id === currentUserId;
     }
     return player === currentUserId;
   }
-  
-  // isCreator(player: User | string): boolean {
-  //   if (!this.currentCompetition) return false;
-    
-  //   const playerId = typeof player === 'object' ? player.id : player;
-  //   return playerId === this.currentCompetition.creatorId;
-  // }
 }

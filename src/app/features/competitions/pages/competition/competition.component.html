@@ -26,13 +26,53 @@
       }
     </div>
     <sudoku-table></sudoku-table>
-    <div class="participants shadowed">
+    <!-- <div class="participants shadowed">
       <h2>Jugadores:</h2>
       <ul>
         @for (player of loadParticipants; track player!.id) {
           <li>{{ player!.username || 'Usuario desconocido' }}</li>
         }
       </ul>
+    </div> -->
+    <div class="participants shadowed">
+      <div class="panel-header">
+        <h3>
+          👥 Jugadores
+          <span class="badge"
+            >{{ loadParticipants.length }}/{{ currentCompetition.maxPlayers }}</span
+          >
+        </h3>
+      </div>
+
+      <ul class="players-list">
+        @for (player of loadParticipants; track player; let i = $index) {
+        <li class="player-card" [class.current-user]="isCurrentUser(player)">
+          <span class="player-emoji"> @if (i === 0) { 🏆 } @else { 👤 } </span>
+
+          <span class="player-info">
+            @if (typeof player === 'object') {
+            <span class="username">
+              {{ player!.username || "Jugador " + (i + 1) }}
+              @if (isCurrentUser(player)) {
+              <span class="you-badge">(Tú)</span> }
+            </span>
+            } @else {
+            <span class="user-id">Jugador #{{ player }}</span>
+            }
+          </span>
+
+          @if (i === 0) {
+          <span class="first-badge">Primero</span>
+          }
+        </li>
+        }
+      </ul>
+
+      @if (loadParticipants.length === 0) {
+      <div class="empty-state">
+        <p>🎮 Esperando más jugadores...</p>
+      </div>
+      }
     </div>
   </main>
 </div>
