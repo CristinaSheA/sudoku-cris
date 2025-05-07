@@ -1,32 +1,67 @@
-<div class="container">
-  <button (click)="hint()" class="dark-button button" type="button">Pista</button>
-  <button class="dark-button button" (click)="resolve()" type="button">
-    Verificar
+<header>
+  <button (click)="generateSudoku('easy')" class="dark-button button" type="button" i18n>
+    Fácil
   </button>
-  <button (click)="regenerateSudoku()" class="dark-button button" type="button">
-    Regenerar
+  <button (click)="generateSudoku('medium')" class="dark-button button" type="button" i18n>
+    Medio
   </button>
+  <button (click)="generateSudoku('hard')" class="dark-button button" type="button" i18n>
+    Difícil
+  </button>
+</header>
+<div class="control-panel">
+  <div class="action-group">
+    <button
+      (click)="hint()"
+      class="action-button light-button"
+      type="button"
+      title="Obtener una pista"
+    >
+      💡 Pista
+    </button>
+    <button
+      (click)="resolve()"
+      class="action-button regenerate-button"
+      type="button"
+      title="Verificar solución"
+    >
+      ✅ Verificar
+    </button>
+    <button
+      (click)="regenerateSudoku()"
+      class="action-button regenerate-button"
+      type="button"
+      title="Generar nuevo sudoku"
+    >
+      🔄 Regenerar
+    </button>
+  </div>
+  <div class="mistakes-counter">
+    <span class="mistakes-number">{{ mistakes }}</span
+    >/3 fallos
+  </div>
+  <div class="secondary-actions">
+    <button
+      (click)="setShowCompetition(!showCompetitionPopup)"
+      class="competition-button"
+      type="button"
+      [class.active]="showCompetitionPopup"
+    >
+      🏆 Competir
+    </button>
+    <button
+      (click)="setShowSettings(!showSettings)"
+      class="settings-button"
+      type="button"
+      [class.active]="showSettings"
+    >
+      ⚙️ Ajustes
+    </button>
+  </div>
 
-  <p>{{ mistakes }}/3 fallos</p>
-
-  <button
-    class="compete light-button button"
-    (click)="setShowCompetition(!showCompetitionPopup)"
-    type="button"
-  >
-    Competir
-  </button>
-  <button
-    class="settings light-button button"
-    (click)="setShowSettings(!showSettings)"
-    type="button"
-  >
-    ajustes
-  </button>
   @if(showSettings) {
-  <settings class="shadowed"></settings>
-  }
-  @if(showCompetitionPopup) {
-  <compete-popup class="shadowed"></compete-popup>
+  <settings class="settings-popup shadowed"></settings>
+  } @if(showCompetitionPopup) {
+  <compete-popup class="competition-popup shadowed"></compete-popup>
   }
 </div>

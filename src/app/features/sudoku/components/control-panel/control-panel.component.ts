@@ -8,6 +8,7 @@ import { FormsModule } from '@angular/forms';
 import { CompetePopupComponent } from '../../../../features/competitions/components/compete-popup/compete-popup.component';
 import { SettingsComponent } from '../../../../shared/components/settings/settings.component';
 import { SudokuService } from '../../services/sudoku.service';
+import { Difficulty } from '../../../../core/enums/difficulty.enum';
 
 @Component({
   selector: 'control-panel',
@@ -25,7 +26,24 @@ export class ControlPanelComponent {
   public showSettings: boolean = false;
   public showCompetitionPopup: boolean = false;
 
-
+  public generateSudoku(difficulty: string) {
+    switch (difficulty) {
+      case 'easy':
+        this.sudokuService.generateSudoku(Difficulty.Easy);
+        this.sudokuService.tableUpdated.next()
+        break;
+      case 'medium':
+        this.sudokuService.generateSudoku(Difficulty.Medium);
+        this.sudokuService.tableUpdated.next()
+        break;
+      case 'hard':
+        this.sudokuService.generateSudoku(Difficulty.Hard);
+        this.sudokuService.tableUpdated.next()
+        break;
+    }
+    this.cdr.detectChanges();
+  }
+  
   public setShowSettings(value: boolean) {
     this.showSettings = value;
     this.showCompetitionPopup = false;

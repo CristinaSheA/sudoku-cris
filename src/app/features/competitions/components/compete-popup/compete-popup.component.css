@@ -26,6 +26,7 @@ button {
 .competitions-slides {
   display: flex;
   margin-bottom: 20px;
+  justify-content: space-between;
 }
 .competitions-slides button, .join {
   background-color: transparent;

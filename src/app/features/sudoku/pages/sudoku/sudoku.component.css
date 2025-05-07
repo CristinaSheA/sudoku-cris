@@ -2,13 +2,11 @@
   max-width: 1000px;
   margin: 0 auto;
 }
-header {
-  display: flex;
-  justify-content: center;
-}
 main {
+  margin-top: 40px;
   display: flex;
   justify-content: space-between;
+  align-items: flex-start; 
 }
 control-panel,
 stadistics {
@@ -16,14 +14,9 @@ stadistics {
   border-radius: 5px;
 }
 stadistics {
-  max-width: 190px;
+  width: 250px;
+  max-height: calc(100vh - 100px);
 }
 control-panel {
-  max-width: 160px;
   position: relative;
-}
-header button {
-  margin-right: 20px;
-  margin-bottom: 20px;
-  width: auto;
 }

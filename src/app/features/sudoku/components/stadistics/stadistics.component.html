@@ -1,18 +1,40 @@
-<h2 class="title">Estadísticas del Jugador</h2>
-<ul>
-  <li class="elements">Partidas Jugadas: {{ successRatePercentage(1) }}</li>
-  <li class="elements">Partidas Ganadas: {{ successRatePercentage(2) }}</li>
-  <li class="elements">Tasa de Éxito: {{ successRatePercentage(3) }}%</li>
-  <li class="elements">Distribución de Dificultad:</li>
-  <ul>
-    <li class="elements__dificulty-wins">
-      Fácil: {{ successRatePercentage(4) }}
+<div class="stats-container">
+  <h2 class="title">📊 Estadísticas del Jugador</h2>
+  <ul class="stats-list">
+    <li class="stat-item">
+      <span class="stat-icon">🎮</span>
+      <span class="stat-label">Partidas Jugadas:</span>
+      <span class="stat-value">{{ getUserStat("gamesPlayed") }}</span>
     </li>
-    <li class="elements__dificulty-wins">
-      Intermedio: {{ successRatePercentage(5) }}
+    <li class="stat-item">
+      <span class="stat-icon">🏆</span>
+      <span class="stat-label">Partidas Ganadas:</span>
+      <span class="stat-value">{{ getUserStat("gamesWon") }}</span>
     </li>
-    <li class="elements__dificulty-wins">
-      Difícil: {{ successRatePercentage(6) }}
+    <li class="stat-item">
+      <span class="stat-icon">📈</span>
+      <span class="stat-label">Tasa de Éxito:</span>
+      <span class="stat-value">{{ getSuccessRate() }}%</span>
+    </li>
+    <li class="stat-item difficulty-item">
+      <span class="stat-label">Distribución de Dificultad:</span>
+      <ul class="difficulty-list">
+        <li class="difficulty-level easy">
+          <span class="difficulty-icon">🟢</span>
+          <span class="difficulty-label">Fácil:</span>
+          <span class="difficulty-value">{{ getUserStat("easyWins") }}</span>
+        </li>
+        <li class="difficulty-level medium">
+          <span class="difficulty-icon">🟠</span>
+          <span class="difficulty-label">Intermedio:</span>
+          <span class="difficulty-value">{{ getUserStat("mediumWins") }}</span>
+        </li>
+        <li class="difficulty-level hard">
+          <span class="difficulty-icon">🔴</span>
+          <span class="difficulty-label">Difícil:</span>
+          <span class="difficulty-value">{{ getUserStat("hardWins") }}</span>
+        </li>
+      </ul>
     </li>
   </ul>
-</ul>
+</div>
