@@ -36,10 +36,6 @@
       🔄 Regenerar
     </button>
   </div>
-  <!-- <div class="mistakes-counter">
-    <span class="mistakes-number">{{ mistakes }}</span
-    >/3 fallos
-  </div> -->
   <div class="mistakes-counter">
   <span class="mistakes-number">{{ mistakesCount }}</span>/3 fallos
   </div>
@@ -62,9 +58,12 @@
     </button>
   </div>
 
+
+
   @if(showSettings) {
-  <settings class="settings-popup shadowed"></settings>
-  } @if(showCompetitionPopup) {
-  <compete-popup class="competition-popup shadowed"></compete-popup>
+    <settings class="settings-popup shadowed"></settings>
+  } 
+  @if(showCompetitionPopup) {
+    <compete-popup class="competition-popup shadowed"></compete-popup>
   }
 </div>

@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, inject } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, HostListener, inject } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Competition } from '../../../../core/interfaces/competition.interface';
 import { CompetitionsService } from '../../services/competitions.service';
@@ -84,5 +84,15 @@ export class CompetitionComponent {
       return player.id === currentUserId;
     }
     return player === currentUserId;
+  }
+
+  @HostListener('document:click', ['$event'])
+  onDocumentClick(event: MouseEvent) {
+  const target = event.target as HTMLElement;
+
+  if (!target.closest('settings') && !target.closest('.settings.button')) {
+    this.showSettings = false;
+    this.cdr.markForCheck();
+  }
   }
 }

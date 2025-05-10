@@ -2,6 +2,7 @@ import {
   ChangeDetectionStrategy,
   ChangeDetectorRef,
   Component,
+  HostListener,
   inject,
 } from '@angular/core';
 import { FormsModule } from '@angular/forms';
@@ -24,20 +25,21 @@ export class ControlPanelComponent {
   public isLightMode: boolean = true;
   public showSettings: boolean = false;
   public showCompetitionPopup: boolean = false;
+  public mistakesCount: number = 0;
 
   public generateSudoku(difficulty: string) {
     switch (difficulty) {
       case 'easy':
         this.sudokuService.generateSudoku(Difficulty.Easy);
-        this.sudokuService.tableUpdated.next()
+        this.sudokuService.tableUpdated.next();
         break;
       case 'medium':
         this.sudokuService.generateSudoku(Difficulty.Medium);
-        this.sudokuService.tableUpdated.next()
+        this.sudokuService.tableUpdated.next();
         break;
       case 'hard':
         this.sudokuService.generateSudoku(Difficulty.Hard);
-        this.sudokuService.tableUpdated.next()
+        this.sudokuService.tableUpdated.next();
         break;
     }
     this.cdr.detectChanges();
@@ -50,12 +52,11 @@ export class ControlPanelComponent {
     this.showCompetitionPopup = value;
     this.showSettings = false;
   }
-  mistakesCount: number = 0;
 
   ngOnInit() {
-    this.sudokuService.mistakes$.subscribe(count => {
+    this.sudokuService.mistakes$.subscribe((count) => {
       this.mistakesCount = count;
-      this.cdr.markForCheck(); // actualiza la vista
+      this.cdr.markForCheck();
     });
   }
   public regenerateSudoku() {
@@ -70,5 +71,19 @@ export class ControlPanelComponent {
     this.cdr.detectChanges();
     this.cdr.markForCheck();
   }
+  private closePopups() {
+    this.showSettings = false;
+    this.showCompetitionPopup = false;
+  }
 
+  @HostListener('document:click', ['$event'])
+  onDocumentClick(event: MouseEvent) {
+    const target = event.target as HTMLElement;
+    if (
+      !target.closest('.settings-popup, .competition-popup') &&
+      !target.closest('.settings-button, .competition-button')
+    ) {
+      this.closePopups();
+    }
+  }
 }

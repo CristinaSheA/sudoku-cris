@@ -40,7 +40,6 @@ export class TableComponent {
       this.sudokuService.tableUpdated.next();
     }
   }
-
   ngOnDestroy() {
     this.tableUpdatedSubscription.unsubscribe();
   }
