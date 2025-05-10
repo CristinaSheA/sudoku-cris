@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, inject } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Competition } from '../../../../core/interfaces/competition.interface';
 import { CompetitionsService } from '../../services/competitions.service';
@@ -17,13 +17,14 @@ import { User } from '../../../../core/interfaces/user.interface';
 })
 export class CompetitionComponent {
   private readonly route = inject(ActivatedRoute);
+  private readonly cdr: ChangeDetectorRef = inject(ChangeDetectorRef);
+  private readonly router = inject(Router);
   private readonly competitionsService = inject(CompetitionsService);
   private readonly sudokuService = inject(SudokuService);
   private readonly userService = inject(UserService);
-  private readonly router = inject(Router);
   public currentCompetition!: Competition;
-  public mistakes = this.sudokuService.mistakes;
   public showSettings: boolean = false;
+  public mistakesCount: number = 0;
 
   ngOnInit() {
     this.route.params.subscribe((params) => {
@@ -40,7 +41,12 @@ export class CompetitionComponent {
         error: () => this.router.navigate(['/sudoku']),
       });
     });
+    this.sudokuService.mistakes$.subscribe(count => {
+      this.mistakesCount = count;
+      this.cdr.markForCheck();
+    });
   }
+
   public setShowSettings(value: boolean) {
     this.showSettings = value;
   }

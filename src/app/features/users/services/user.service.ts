@@ -16,10 +16,9 @@ export class UserService {
   private isAuthenticated = false;
   public users: User[] = [];
 
-
   constructor() {
     this.isAuthenticated = localStorage.getItem('isAuthenticated') === 'true';
-    this.getUsers()
+    this.getUsers();
   }
   public isLoggedIn(): boolean {
     return this.isAuthenticated;
@@ -68,6 +67,18 @@ export class UserService {
         Swal.fire('Error', 'Invalid email or password', 'error');
       },
     });
+  }
+  public async updateUser(user: User): Promise<void> {
+    try {
+      const response = await this.http
+        .patch(`${this.apiUrl}/${user.id}`, user)
+        .toPromise();
+      console.log('User stats updated:', response);
+      this.getUsers();
+    } catch (error) {
+      console.error('Error updating user stats:', error);
+      throw error;
+    }
   }
   public getCurrentUser(): any {
     const userId = localStorage.getItem('userId');

@@ -1,18 +1,19 @@
-import { Injectable } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 import Swal from 'sweetalert2';
-import { Subject } from 'rxjs';
+import { BehaviorSubject, Subject } from 'rxjs';
 import { Difficulty } from '../../../core/enums/difficulty.enum';
+import { UserService } from '../../users/services/user.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class SudokuService {
+  private readonly usersService = inject(UserService);
   public selectedCell: { row: number; col: number } | null = null;
   public tableUpdated: Subject<void> = new Subject<void>();
   public difficulty: Difficulty = Difficulty.Easy;
-
   public table: number[][] = [];
-  public mistakes: number = 0;
+  public mistakes$: BehaviorSubject<number> = new BehaviorSubject(0);
 
   public generateSudoku(difficulty: Difficulty) {
     this.table = Array.from({ length: 9 }, () => Array(9).fill(0));
@@ -79,29 +80,44 @@ export class SudokuService {
     }
     return true;
   }
-  public completeSudoku(): void {
+  public completeSudoku(difficulty: Difficulty): void {
     const isComplete = this.table.every((row) =>
       row.every((cell) => cell !== 0)
     );
+    const currentUserId = localStorage.getItem('userId');
+    if (!currentUserId) {
+      console.error('User ID not found');
+      return;
+    }
+    const user = this.usersService.users.find((u) => u.id === currentUserId);
+    if (!user) {
+      console.error('User not found');
+      return;
+    }
+    user.gamesPlayed += 1;
 
     if (isComplete) {
-      console.log('completed');
-      // this.playerStatsService.gamesWon += 1;
-      // this.alerts(3);
-      // switch (this.difficulty) {
-      //   case Difficulty.Easy:
-      //     this.playerStatsService.easyGamesWon += 1;
-      //     break;
-      //   case Difficulty.Medium:
-      //     this.playerStatsService.mediumGamesWon += 1;
-      //     break;
-      //   case Difficulty.Hard:
-      //     this.playerStatsService.hardGamesWon += 1;
-      //     break;
-      // }
-    } else {
-      console.log('incompleted');
+      switch (difficulty) {
+        case Difficulty.Easy:
+          user.gamesWon.easy += 1;
+          break;
+        case Difficulty.Medium:
+          user.gamesWon.medium += 1;
+          break;
+        case Difficulty.Hard:
+          user.gamesWon.hard += 1;
+          break;
+      }
+      const totalWins =
+        user.gamesWon.easy + user.gamesWon.medium + user.gamesWon.hard;
+      user.successRate = parseFloat(
+        ((totalWins / user.gamesPlayed) * 100).toFixed(2)
+      );
+      this.alerts(3);
     }
+    this.usersService.updateUser(user).catch((error) => {
+      console.error('Failed to update user stats:', error);
+    });
   }
   public hint(): void {
     let randomRowIndex = Math.floor(Math.random() * this.table.length);
@@ -152,39 +168,35 @@ export class SudokuService {
 
     switch (error) {
       case 1:
-        this.mistakes += 1;
+        this.mistakes$.next(this.mistakes$.value + 1);
         Toast.fire({
           icon: 'error',
           title: 'You can use only numbers from 1 to 9.',
         });
         break;
       case 2:
-        this.mistakes += 1;
+        this.mistakes$.next(this.mistakes$.value + 1);
         Toast.fire({
           icon: 'error',
           title:
             'Each number in the 3x3 block, vertical column or horizontal row can be used only once.',
         });
         break;
-      case 4:
+      case 3:
         Toast.fire({
           icon: 'success',
           title: 'You completed the sudoku, congratulations!',
         });
         break;
     }
-
-    if (this.mistakes === 2) {
-      Toast2.fire({
-        icon: 'warning',
-        title:
-          'You made 2/3 mistakes, if you fail again, you will have to do it again, watch out! 👀',
-      });
-    }
-    if (this.mistakes === 3) {
-      Toast.fire({
+    if (this.mistakes$.value === 3) {
+      Swal.fire({
         icon: 'error',
-        title: 'Oh no! You made 3 mistakes, start from scratch again 🤯😵',
+        title: 'Game Over',
+        text: 'Has cometido 3 errores. La partida termina.',
+      }).then(() => {
+        this.mistakes$.next(0);
+        this.regenerateSudoku();
       });
     }
   }

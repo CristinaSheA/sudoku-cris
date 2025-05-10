@@ -8,6 +8,7 @@ import {
 import { Difficulty } from '../../../../core/enums/difficulty.enum';
 import { Subscription } from 'rxjs';
 import { SudokuService } from '../../services/sudoku.service';
+import { UserService } from '../../../users/services/user.service';
 
 @Component({
   selector: 'sudoku-table',
@@ -22,6 +23,8 @@ export class TableComponent {
   private readonly cdr: ChangeDetectorRef = inject(ChangeDetectorRef);
   public table: any = this.sudokuService.table;
   private tableUpdatedSubscription!: Subscription;
+  private firstChangeMade = false;
+  private readonly usersService = inject(UserService);
 
   ngOnInit() {
     this.tableUpdatedSubscription = this.sudokuService.tableUpdated.subscribe(
@@ -29,10 +32,15 @@ export class TableComponent {
         this.refreshTable();
       }
     );
-    this.sudokuService.generateSudoku(Difficulty.Easy);
-    this.sudokuService.tableUpdated.next()
 
+    if (this.sudokuService.table && this.sudokuService.table.length > 0) {
+      this.refreshTable();
+    } else {
+      this.sudokuService.generateSudoku(Difficulty.Easy);
+      this.sudokuService.tableUpdated.next();
+    }
   }
+
   ngOnDestroy() {
     this.tableUpdatedSubscription.unsubscribe();
   }
@@ -47,34 +55,43 @@ export class TableComponent {
     }
   }
   public saveNewNumber(row: number, col: number, event: any | null): void {
-    if (this.selectCell === null) return;
+    if (this.sudokuService.selectedCell === null) return;
     const inputValue = event.target.value;
     if (inputValue === '') return;
-
     const parsedValue = parseInt(inputValue, 10);
     if (isNaN(parsedValue)) {
       event.target.value = '';
       return;
     }
 
+    if (!this.firstChangeMade) {
+      this.firstChangeMade = true;
+      const currentUserId = localStorage.getItem('userId');
+      const user = this.usersService.users.find((u) => u.id === currentUserId);
+      if (!user) {
+        console.error('User not found');
+        return;
+      }
+      user.gamesPlayed += 1;
+      this.usersService.updateUser(user).catch((error) => {
+        console.error('Failed to update user stats:', error);
+      });
+    }
+
     if (!this.sudokuService.canPlaceNumber(row, col, parsedValue)) {
-      this.sudokuService.mistakes += 1;
+      console.log(this.sudokuService.mistakes$.value);
       return;
     }
 
     this.table[row][col] = parsedValue;
-
     const isComplete = this.table.every((row: number[]) =>
       row.every((cell) => cell !== 0)
     );
-
     if (isComplete) {
-      this.sudokuService.completeSudoku();
+      this.sudokuService.completeSudoku(this.sudokuService.difficulty);
     }
-
     this.cdr.markForCheck();
     this.sudokuService.selectedCell = null;
-
     const inputElement = document.querySelector(
       `td[row="${row}"][col="${col}"] input`
     );
@@ -91,7 +108,7 @@ export class TableComponent {
     }
   }
   @HostListener('document:keydown', ['$event'])
-  handleKeyboardEvent(event: KeyboardEvent) {
+  private handleKeyboardEvent(event: KeyboardEvent) {
     if (event.key === 'Enter') {
       if (!this.sudokuService.selectedCell) return;
       const inputElement = document.querySelector(

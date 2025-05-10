@@ -21,7 +21,6 @@ import { Difficulty } from '../../../../core/enums/difficulty.enum';
 export class ControlPanelComponent {
   private readonly sudokuService: SudokuService = inject(SudokuService);
   private readonly cdr: ChangeDetectorRef = inject(ChangeDetectorRef);
-  public mistakes = this.sudokuService.mistakes;
   public isLightMode: boolean = true;
   public showSettings: boolean = false;
   public showCompetitionPopup: boolean = false;
@@ -43,7 +42,6 @@ export class ControlPanelComponent {
     }
     this.cdr.detectChanges();
   }
-  
   public setShowSettings(value: boolean) {
     this.showSettings = value;
     this.showCompetitionPopup = false;
@@ -52,8 +50,13 @@ export class ControlPanelComponent {
     this.showCompetitionPopup = value;
     this.showSettings = false;
   }
+  mistakesCount: number = 0;
+
   ngOnInit() {
-    this.mistakes = this.sudokuService.mistakes;
+    this.sudokuService.mistakes$.subscribe(count => {
+      this.mistakesCount = count;
+      this.cdr.markForCheck(); // actualiza la vista
+    });
   }
   public regenerateSudoku() {
     this.sudokuService.regenerateSudoku();
@@ -67,4 +70,5 @@ export class ControlPanelComponent {
     this.cdr.detectChanges();
     this.cdr.markForCheck();
   }
+
 }

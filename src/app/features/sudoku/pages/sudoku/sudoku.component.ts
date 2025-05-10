@@ -38,6 +38,7 @@ export class SudokuComponent {
         this.sudokuService.tableUpdated.next()
         break;
     }
-    this.cdr.detectChanges();
+    this.sudokuService.tableUpdated.next();
+    setTimeout(() => this.cdr.detectChanges(), 0);
   }
 }

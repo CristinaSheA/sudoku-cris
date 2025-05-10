@@ -4,9 +4,10 @@ export interface User {
   email: string;
   password: string;
   gamesPlayed: number;
-  gamesWon: number;
+  gamesWon: {
+    easy: number;
+    medium: number;
+    hard: number;
+  };
   successRate: number;
-  easyGamesWon: number;
-  mediumGamesWon: number;
-  hardGamesWon: number;
 }
